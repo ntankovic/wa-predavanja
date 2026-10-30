@@ -1,0 +1,7 @@
+# O ovoj knjizi {.unnumbered}
+
+Kolegij Web aplikacije obrađuje principe backend inženjerstva kroz 12 tjedana i jednu aplikaciju koja se postupno razvija. Svaki tjedan polazi od pitanja: što se doista događa kada zahtjev stigne na backend?
+
+Nastavnik: izv. prof. dr. sc. Nikola Tanković, Fakultet informatike, Sveučilište Jurja Dobrile u Puli.
+
+**Ovo je strukturni predložak.** Redoslijed predavanja je zadan, ali potpune skripte za 90–120 minuta i pripadajući slajdovi još nisu napisani ni pregledani. Hrvatski sadržaj razvija se prije engleskog prijevoda.

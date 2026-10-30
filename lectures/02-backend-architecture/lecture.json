@@ -1,0 +1,14 @@
+{
+  "status": "drafting",
+  "scaffold": false,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 2,
+  "title_hr": "Arhitektura backend aplikacije",
+  "title_en": "Backend Application Architecture",
+  "substantive_slides": 37,
+  "slides_version": "1.6"
+}

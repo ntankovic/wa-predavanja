@@ -1,0 +1,366 @@
+[
+  {
+    "slide": 1,
+    "title": "Klijent, poslužitelj i HTTP",
+    "start": 0,
+    "end": 0.5,
+    "minutes": 0.5
+  },
+  {
+    "slide": 2,
+    "title": "Evidencija prisutnosti",
+    "start": 0.5,
+    "end": 1,
+    "minutes": 0.5
+  },
+  {
+    "slide": 3,
+    "title": "Stranica se otvorila. Gdje su proizvodi?",
+    "start": 1,
+    "end": 3,
+    "minutes": 2
+  },
+  {
+    "slide": 4,
+    "title": "Ishodi i predznanje",
+    "start": 3,
+    "end": 4,
+    "minutes": 1
+  },
+  {
+    "slide": 5,
+    "title": "Što je Firebase radio za nas?",
+    "start": 4,
+    "end": 6,
+    "minutes": 2
+  },
+  {
+    "slide": 6,
+    "title": "Kako je nastao web?",
+    "start": 6,
+    "end": 9,
+    "minutes": 3
+  },
+  {
+    "slide": 7,
+    "title": "Prvi webovi: pogledajmo",
+    "start": 9,
+    "end": 12,
+    "minutes": 3
+  },
+  {
+    "slide": 8,
+    "title": "HTTP: zahtjev i odgovor",
+    "start": 12,
+    "end": 15,
+    "minutes": 3
+  },
+  {
+    "slide": 9,
+    "title": "Prvi pogled u Network",
+    "start": 15,
+    "end": 19,
+    "minutes": 4
+  },
+  {
+    "slide": 10,
+    "title": "Adresa i putanja",
+    "start": 19,
+    "end": 21,
+    "minutes": 2
+  },
+  {
+    "slide": 11,
+    "title": "Kako pronaći odredište: DNS",
+    "start": 21,
+    "end": 23,
+    "minutes": 2
+  },
+  {
+    "slide": 12,
+    "title": "Zahtjev koji pratimo",
+    "start": 23,
+    "end": 25,
+    "minutes": 2
+  },
+  {
+    "slide": 13,
+    "title": "Metoda opisuje namjeru",
+    "start": 25,
+    "end": 28,
+    "minutes": 3
+  },
+  {
+    "slide": 14,
+    "title": "Odgovor: status, zaglavlja, tijelo",
+    "start": 28,
+    "end": 30,
+    "minutes": 2
+  },
+  {
+    "slide": 15,
+    "title": "Skupine statusa i granice zaključka",
+    "start": 30,
+    "end": 32,
+    "minutes": 2
+  },
+  {
+    "slide": 16,
+    "title": "20 HTTP statusa po obiteljima",
+    "start": 32,
+    "end": 34,
+    "minutes": 2
+  },
+  {
+    "slide": 17,
+    "title": "Accept i Content-Type",
+    "start": 34,
+    "end": 36,
+    "minutes": 2
+  },
+  {
+    "slide": 18,
+    "title": "Naš nastavni backend",
+    "start": 36,
+    "end": 38,
+    "minutes": 2
+  },
+  {
+    "slide": 19,
+    "title": "Utipkajmo HTTP zahtjev ručno",
+    "start": 38,
+    "end": 42,
+    "minutes": 4
+  },
+  {
+    "slide": 20,
+    "title": "Veza i port",
+    "start": 42,
+    "end": 44,
+    "minutes": 2
+  },
+  {
+    "slide": 21,
+    "title": "Program, proces i računalo",
+    "start": 44,
+    "end": 47,
+    "minutes": 3
+  },
+  {
+    "slide": 22,
+    "title": "Handler je granica obrade",
+    "start": 47,
+    "end": 49,
+    "minutes": 2
+  },
+  {
+    "slide": 23,
+    "title": "Okvir stranice i podaci stižu odvojeno",
+    "start": 49,
+    "end": 52,
+    "minutes": 3
+  },
+  {
+    "slide": 24,
+    "title": "Naivan dohvat proizvoda",
+    "start": 52,
+    "end": 56,
+    "minutes": 4
+  },
+  {
+    "slide": 25,
+    "title": "Razlikuj stanja prikaza",
+    "start": 56,
+    "end": 59,
+    "minutes": 3
+  },
+  {
+    "slide": 26,
+    "title": "Dohvat s eksplicitnom provjerom",
+    "start": 59,
+    "end": 63,
+    "minutes": 4
+  },
+  {
+    "slide": 27,
+    "title": "Isti zahtjev, četiri ishoda",
+    "start": 63,
+    "end": 67,
+    "minutes": 4
+  },
+  {
+    "slide": 28,
+    "title": "HTTPS i granica zaštite",
+    "start": 67,
+    "end": 70,
+    "minutes": 3
+  },
+  {
+    "slide": 29,
+    "title": "Granica povjerenja",
+    "start": 70,
+    "end": 72,
+    "minutes": 2
+  },
+  {
+    "slide": 30,
+    "title": "Webshop: tko određuje cijenu?",
+    "start": 72,
+    "end": 74,
+    "minutes": 2
+  },
+  {
+    "slide": 31,
+    "title": "Reverse proxy je posrednik",
+    "start": 74,
+    "end": 77,
+    "minutes": 3
+  },
+  {
+    "slide": 32,
+    "title": "Jedan URL, više procesa",
+    "start": 77,
+    "end": 78,
+    "minutes": 1
+  },
+  {
+    "slide": 33,
+    "title": "Slijed 1: preglednik šalje zahtjev",
+    "start": 78,
+    "end": 80,
+    "minutes": 2
+  },
+  {
+    "slide": 34,
+    "title": "Slijed 2: backend traži podatke",
+    "start": 80,
+    "end": 82,
+    "minutes": 2
+  },
+  {
+    "slide": 35,
+    "title": "Slijed 3: backend oblikuje odgovor",
+    "start": 82,
+    "end": 84,
+    "minutes": 2
+  },
+  {
+    "slide": 36,
+    "title": "Slijed 4: prikaz se ažurira",
+    "start": 84,
+    "end": 86,
+    "minutes": 2
+  },
+  {
+    "slide": 37,
+    "title": "Gdje je stanje?",
+    "start": 86,
+    "end": 89,
+    "minutes": 3
+  },
+  {
+    "slide": 38,
+    "title": "Što znači HTTP stateless?",
+    "start": 89,
+    "end": 92,
+    "minutes": 3
+  },
+  {
+    "slide": 39,
+    "title": "Cookie prenosi kontekst",
+    "start": 92,
+    "end": 96,
+    "minutes": 4
+  },
+  {
+    "slide": 40,
+    "title": "Jedna TCP veza, više HTTP zahtjeva",
+    "start": 96,
+    "end": 98,
+    "minutes": 2
+  },
+  {
+    "slide": 41,
+    "title": "CORS: odgovor i pristup iz JavaScripta",
+    "start": 98,
+    "end": 100,
+    "minutes": 2
+  },
+  {
+    "slide": 42,
+    "title": "CORS na primjeru: zahtjev stiže, čitanje ne",
+    "start": 100,
+    "end": 102,
+    "minutes": 2
+  },
+  {
+    "slide": 43,
+    "title": "Gdje odlazi vrijeme?",
+    "start": 102,
+    "end": 104,
+    "minutes": 2
+  },
+  {
+    "slide": 44,
+    "title": "Bez odgovora: što se doista dogodilo?",
+    "start": 104,
+    "end": 107,
+    "minutes": 3
+  },
+  {
+    "slide": 45,
+    "title": "Vježba: locirajte sljedeću provjeru",
+    "start": 107,
+    "end": 111,
+    "minutes": 4
+  },
+  {
+    "slide": 46,
+    "title": "Provjera: tri česte zablude",
+    "start": 111,
+    "end": 113,
+    "minutes": 2
+  },
+  {
+    "slide": 47,
+    "title": "Sažetak jednog zahtjeva",
+    "start": 113,
+    "end": 115,
+    "minutes": 2
+  },
+  {
+    "slide": 48,
+    "title": "Osmislite sljedeći korak",
+    "start": 115,
+    "end": 118,
+    "minutes": 3
+  },
+  {
+    "slide": 49,
+    "title": "Pregled: 10 zaglavlja zahtjeva",
+    "start": 118,
+    "end": 118.5,
+    "minutes": 0.5
+  },
+  {
+    "slide": 50,
+    "title": "Pregled: 10 zaglavlja odgovora",
+    "start": 118.5,
+    "end": 119.0,
+    "minutes": 0.5
+  },
+  {
+    "slide": 51,
+    "title": "Literatura: HTTP i preglednik",
+    "start": 119.0,
+    "end": 119.5,
+    "minutes": 0.5
+  },
+  {
+    "slide": 52,
+    "title": "Literatura: put kroz sustav",
+    "start": 119.5,
+    "end": 120.0,
+    "minutes": 0.5
+  }
+]

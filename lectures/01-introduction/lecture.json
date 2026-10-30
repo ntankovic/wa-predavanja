@@ -1,0 +1,14 @@
+{
+  "status": "drafting",
+  "scaffold": false,
+  "duration_minutes": 120,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 1,
+  "title_hr": "Klijent, poslužitelj i HTTP",
+  "title_en": "How Web Applications Actually Work",
+  "substantive_slides": 47,
+  "slides_version": "1.35"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 7,
+  "title_hr": "Sigurnost web aplikacija",
+  "title_en": "Web Application Security"
+}

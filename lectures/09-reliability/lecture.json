@@ -1,0 +1,12 @@
+{
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 9,
+  "title_hr": "Pouzdanost i obrada pogrešaka",
+  "title_en": "Reliability and Error Handling"
+}

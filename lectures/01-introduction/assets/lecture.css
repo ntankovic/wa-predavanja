@@ -1,0 +1,156 @@
+.reveal { font-size: 32px; }
+.reveal h1, .reveal h2 { color: #18344b; text-transform: none; }
+.reveal h2 { font-size: 1.55em; line-height: 1.15; margin-bottom: 0.6em; }
+.reveal #title-slide h1 { font-size: 2.0em; line-height: 1.1; max-width: 950px; }
+.reveal #title-slide .subtitle { color: #1585b4; margin-top: 0.9em; }
+.reveal #title-slide .quarto-title-author-name { font-size: 0.8em; }
+.reveal #title-slide .institute { font-size: 0.7em; }
+.reveal table { font-size: 0.86em; width: 100%; }
+.reveal table th, .reveal table td { padding: 0.45em; border-bottom: 1px solid #c5d5df; }
+.reveal img { object-fit: contain; }
+.reveal strong { color: #105d80; }
+
+
+.reveal pre { font-size: 0.65em; line-height: 1.25; }
+.reveal .slide > p:has(img) { text-align: center; margin: 0.25em 0; }
+.reveal .slide > p > img { margin: 0; max-height: 340px; }
+/* RS lecture 01 badge styling, with Croatian labels. */
+.reveal .example-slide > h2::before,
+.reveal .exercise-slide > h2::before {
+  display: table;
+  padding: 0.25em 0.7em;
+  margin-bottom: 0.6em;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+.reveal .example-slide > h2::before { content: "💡 Primjer"; background: #e7f3fb; color: #184d70; }
+.reveal .exercise-slide > h2::before { content: "✏️ Vježba"; background: #f0ebfa; color: #594079; }
+.reveal .references-slide { font-size: 0.78em; }
+.reveal .references-slide li { margin-bottom:0.45em; }
+
+/* Answer chips adapted from lecturer RS 01. */
+.reveal .answer-chips p { display: flex; flex-wrap: wrap; gap: 0.65em; align-items: center; }
+.reveal .answer-chip { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.35em 0.75em; border-radius: 999px; border: 2px solid; font-size: 0.9em; }
+.reveal .answer-chip strong { color: inherit; }
+.reveal .answer-a { background: #e7f3fb; border-color: #8cbad7; color: #184d70; }
+.reveal .answer-b { background: #f0ebfa; border-color: #b5a0d4; color: #594079; }
+.reveal .answer-c { background: #fff2df; border-color: #d5ad70; color: #795219; }
+.reveal .opening-question h2 { font-size:1.35em; }
+.reveal .opening-question > p { margin:18px 0; }
+.reveal .opening-question .answer-chip { font-size:26px; }
+
+.reveal .firebase-slide > p { font-size:28px; line-height:1.3; margin:16px 0; }
+
+.reveal .dns-slide > p { font-size:26px; line-height:1.3; margin:14px 0; }
+/* Compact, color-coded reference maps. */
+.reveal .status-map-slide h2, .reveal .header-map-slide h2 { font-size:1.35em; }
+.reveal .status-family { display:grid; grid-template-columns:240px 1fr; column-gap:18px; padding:10px 16px; margin:8px 0; border-left:5px solid var(--family); border-radius:10px; background:#f5f8fb; }
+.reveal .status-family p { margin:0; font-size:18px; line-height:1.3; }
+.reveal .status-family p:first-child { font-size:23px; grid-column:1; color:var(--family); }
+.reveal .status-family p:nth-child(2) { grid-column:1; color:#536b7b; margin-top:4px; }
+.reveal .status-family p:nth-child(3) { grid-column:2; grid-row:1 / 3; align-self:center; display:flex; flex-wrap:wrap; gap:5px 8px; }
+.reveal .status-family strong { color:var(--family); }
+.reveal .family-1 { --family:#417d9e; }
+.reveal .family-2 { --family:#277b59; }
+.reveal .family-3 { --family:#8660a4; }
+.reveal .family-4 { --family:#a56c24; }
+.reveal .family-5 { --family:#b63842; }
+.reveal .status-tag { padding:4px 8px; border-radius:7px; background:white; border:1px solid #dbe4eb; font-size:19px; white-space:nowrap; }
+.reveal .status-tag code { color:var(--family); font-weight:700; }
+.reveal .header-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; }
+.reveal .header-item { background:#f3f8fb; border:1px solid #d4e3ec; border-radius:12px; padding:12px 16px; }
+.reveal .header-item p { font-size:20px; line-height:1.3; margin:4px 0 0; }
+.reveal .header-item p:first-child { font-size:22px; margin:0; }
+.reveal .header-map-slide > p { font-size:25px; margin:0 0 16px; }
+.reveal .webshop-slide > p, .reveal .content-type-slide > p { font-size:27px; line-height:1.3; margin:12px 0; }
+.reveal .webshop-slide h2 { font-size:1.35em; }
+.reveal .webshop-slide > p > img { max-height:390px; }
+.reveal .process-slide > p > img { max-height:470px; }
+.reveal .demonstration-slide > h2::before { content:"▶ Demonstracija"; display:table; padding:0.25em 0.7em; margin-bottom:0.6em; border-radius:999px; background:#e7f3fb; color:#184d70; font-size:20px; line-height:1.2; }
+.reveal .history-slide > p { font-size:27px; line-height:1.3; margin:0 0 12px; }
+.reveal .history-slide table { font-size:22px; }
+.reveal .history-slide table th, .reveal .history-slide table td { padding:0.3em 0.45em; }
+.reveal .manual-http-slide h2 { font-size:1.35em; margin-bottom:0.3em; }
+.reveal .manual-http-slide > p, .reveal .manual-http-slide li, .reveal .manual-http-slide .column p { font-size:24px; line-height:1.3; margin:6px 0; }
+.reveal .manual-http-slide table { font-size:21px; }
+.reveal .manual-http-slide table th, .reveal .manual-http-slide table td { padding:0.25em 0.45em; }
+.reveal .manual-http-slide pre { font-size:0.6em; margin:6px 0; }
+.reveal .two-phase-slide table { font-size:26px; margin-bottom:28px; }
+
+/* Outcomes slide: numbered cards with highlighted verb, prerequisites strip. */
+.reveal .outcomes-slide > p:first-of-type { font-size:24px; color:#536b7b; margin:0 0 14px; }
+.reveal .outcomes-slide ol { list-style:none; counter-reset:outcome; margin:0; padding:0; display:grid; gap:10px; }
+.reveal .outcomes-slide ol li { counter-increment:outcome; display:flex; align-items:center; gap:18px; margin:0; padding:10px 18px; font-size:26px; line-height:1.25; background:#f3f8fb; border:1px solid #d4e3ec; border-radius:14px; }
+.reveal .outcomes-slide ol li::before { content:counter(outcome); flex:0 0 38px; height:38px; border-radius:50%; background:#3886ad; color:#fff; font-weight:700; font-size:21px; display:flex; align-items:center; justify-content:center; }
+.reveal .outcomes-slide ol li strong { color:#105d80; }
+.reveal .outcomes-slide .prereq { margin-top:22px; padding:12px 18px; background:#fff8ec; border-left:5px solid #d5ad70; border-radius:10px; }
+.reveal .outcomes-slide .prereq p { margin:0; font-size:23px; line-height:1.35; }
+.reveal .outcomes-slide .prereq-label { display:inline-block; margin-right:10px; padding:2px 10px; border-radius:999px; background:#d5ad70; color:#fff; font-size:18px; font-weight:700; vertical-align:2px; }
+
+/* Bloom level badge on outcome cards (revised taxonomy). */
+.reveal .outcomes-slide .bloom { margin-left:auto; flex:0 0 auto; padding:3px 12px; border-radius:999px; font-size:17px; font-weight:600; border:1.5px solid; white-space:nowrap; }
+.reveal .outcomes-slide .b2 { background:#e7f3fb; border-color:#8cbad7; color:#184d70; }
+.reveal .outcomes-slide .b3 { background:#e6f4ee; border-color:#86c2a6; color:#1f6447; }
+.reveal .outcomes-slide .b4 { background:#f0ebfa; border-color:#b5a0d4; color:#594079; }
+.reveal .outcomes-slide .b5 { background:#fff2df; border-color:#d5ad70; color:#795219; }
+
+/* Outcomes: fixed layout (number left, Bloom badge right) so inline code does not split the text. */
+.reveal .outcomes-slide ol li { display:block; position:relative; padding:12px 175px 12px 74px; }
+.reveal .outcomes-slide ol li::before { position:absolute; left:18px; top:50%; transform:translateY(-50%); width:38px; display:flex; }
+.reveal .outcomes-slide .bloom { position:absolute; right:16px; top:50%; transform:translateY(-50%); margin:0; }
+.reveal .outcomes-slide ol li code { font-size:0.85em; }
+
+/* Terminal look for shell commands: inline `cmd`{.cmd} and ```{.terminal} blocks. */
+.reveal code.cmd { background:#1e2b36; color:#e6edf3; padding:0.08em 0.45em; border-radius:6px; font-size:0.82em; white-space:nowrap; }
+.reveal code.cmd::before { content:"$ "; color:#7ee787; }
+.reveal div.sourceCode:has(> pre.terminal), .reveal pre.terminal { background:#1e2b36; border:none; border-radius:10px; box-shadow:none; }
+.reveal pre.terminal { position:relative; padding:34px 18px 14px; color:#e6edf3; width:100%; box-sizing:border-box; }
+.reveal pre.terminal::before { content:""; position:absolute; top:12px; left:16px; width:11px; height:11px; border-radius:50%; background:#ff5f57; box-shadow:18px 0 0 #febc2e, 36px 0 0 #28c840; }
+.reveal pre.terminal code { color:#e6edf3; background:transparent; }
+.reveal code.cmd span, .reveal pre.terminal code span { color:inherit !important; font-style:normal !important; font-weight:inherit !important; background:none !important; }
+
+/* History timeline: alternating cards above and below one axis (lecturer, 2026-10-28). */
+.reveal .timeline { position: relative; height: 400px; margin: 0; font-size: 20px; line-height: 1.28; }
+.reveal .timeline .tl-axis { position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: linear-gradient(90deg, #417d9e 0%, #417d9e 83%, rgba(65,125,158,.25) 83%, rgba(65,125,158,.25) 86%, #417d9e 86%); }
+.reveal .timeline .tl-item { position: absolute; top: 0; bottom: 0; width: 31%; transform: translateX(-50%); }
+.reveal .timeline .tl-dot { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #fff; border: 4px solid #417d9e; box-sizing: border-box; }
+.reveal .timeline .tl-year { position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; color: #18344b; font-size: 22px; }
+.reveal .timeline .up .tl-year { bottom: calc(50% + 14px); }
+.reveal .timeline .down .tl-year { top: calc(50% + 14px); }
+.reveal .timeline .tl-card { position: absolute; left: 4%; right: 4%; padding: 10px 12px; background: #f5f8fb; border: 1.5px solid #c6d5df; border-radius: 10px; text-align: center; color: #20384d; }
+.reveal .timeline .up .tl-card { bottom: calc(50% + 46px); }
+.reveal .timeline .down .tl-card { top: calc(50% + 46px); }
+.reveal .timeline .up .tl-card::after, .reveal .timeline .down .tl-card::after { content: none; position: absolute; left: 50%; width: 2px; height: 16px; margin-left: -1px; background: #9fbccd; }
+.reveal .timeline .up .tl-card::after { top: 100%; }
+.reveal .timeline .down .tl-card::after { bottom: 100%; }
+.reveal .timeline .key .tl-card { background: #eaf3f8; border-color: #417d9e; border-width: 2px; font-weight: 600; }
+.reveal .timeline .key .tl-dot { background: #417d9e; }
+.reveal .timeline .now .tl-dot { border-style: dashed; }
+.reveal .timeline code { font-size: 0.9em; }
+
+/* Timeline: cards further from the axis so neighbouring years stay visible (lecturer, 2026-10-28). */
+.reveal .timeline { height: 470px; }
+.reveal .timeline .up .tl-card { bottom: calc(50% + 62px); }
+.reveal .timeline .down .tl-card { top: calc(50% + 62px); }
+
+/* HTTP methods: coloured verb pills, intent, read/change tag. */
+.reveal .methods ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 10px; }
+.reveal .methods li { position: relative; margin: 0; padding: 12px 190px 12px 150px; font-size: 27px; line-height: 1.25; background: #f5f8fb; border: 1px solid #d7e3ea; border-radius: 14px; }
+.reveal .methods .verb { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 112px; padding: 5px 0; border-radius: 8px; text-align: center; font-family: var(--r-code-font, monospace); font-size: 21px; font-weight: 700; color: #fff; }
+.reveal .methods .get { background: #277b59; }
+.reveal .methods .post { background: #c97a1e; }
+.reveal .methods .put { background: #417d9e; }
+.reveal .methods .patch { background: #8660a4; }
+.reveal .methods .delete { background: #b63842; }
+.reveal .methods .mtag { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); padding: 3px 12px; border-radius: 999px; font-size: 17px; font-weight: 600; color: #795219; background: #fff2df; border: 1.5px solid #d5ad70; white-space: nowrap; }
+.reveal .methods .mtag.read { color: #1f6447; background: #e6f4ee; border-color: #86c2a6; }
+.reveal .method-rule { margin-top: 22px; padding: 12px 18px; border-left: 5px solid #277b59; background: #e6f4ee; border-radius: 10px; }
+.reveal .method-rule p { margin: 0; font-size: 28px; }
+.reveal .timeline .tl-item { width: 27%; }
+.reveal .timeline .tl-card { font-size: 19px; }
+.reveal .timeline .tl-item:nth-child(2) .tl-card { left: 23%; right: -23%; }
+.reveal .timeline .tl-item:last-child .tl-card { left: -23%; right: 23%; }

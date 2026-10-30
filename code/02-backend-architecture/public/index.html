@@ -1,0 +1,41 @@
+<!doctype html><html lang="hr"><meta charset="utf-8"><title>Narudžbe — Web aplikacije</title>
+<style>body{font:20px system-ui;max-width:850px;margin:60px auto;color:#18344b}button{font:inherit;padding:10px;margin:6px}pre{background:#edf7fc;padding:20px;white-space:pre-wrap}small{display:block}</style>
+<h1>Dohvat proizvoda</h1><p>Otvorite alate za razvoj i karticu Network. Kliknite „Dohvati proizvode” i pogledajte primljene podatke.</p>
+<small>Lokalni nastavni primjer s testnim podacima.</small>
+<div><button data-case="ok">Dohvati proizvode</button><button data-case="empty">Prazno</button><button data-case="error">Pogreška poslužitelja</button><button data-case="slow">Sporo</button><button data-case="html">Neočekivan HTML</button></div>
+<p id="status" role="status">Odaberite slučaj.</p><pre id="result"></pre>
+<script>
+const status = document.querySelector('#status');
+const result = document.querySelector('#result');
+const buttons = [...document.querySelectorAll('button')];
+buttons.forEach(button => button.addEventListener('click', async () => {
+  buttons.forEach(b => b.disabled = true);
+  status.textContent = 'Učitavanje proizvoda…'; result.textContent = '';
+  try {
+    const r = await fetch('/products?case=' + button.dataset.case);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    if (!Array.isArray(data) || !data.every(p => Number.isInteger(p.id) && typeof p.name === 'string' && typeof p.price === 'number')) throw new Error('Neočekivan oblik podataka');
+    status.textContent = data.length ? 'Proizvodi su dohvaćeni.' : 'Nema proizvoda za ovaj upit.';
+    result.textContent = JSON.stringify(data, null, 2);
+  } catch (e) {
+    status.textContent = 'Dohvat nije uspio.';
+    result.textContent = e.message;
+  } finally { buttons.forEach(b => b.disabled = false); }
+}));
+</script>
+<h2>Narudžba</h2>
+<form id="order"><label>E-pošta <input name="email" value="ana@primjer.hr"></label>
+<label>Proizvod <select name="productId"><option value="7">Bilježnica</option><option value="8">Olovka</option><option value="9">Ruksak</option></select></label>
+<label>Količina <input name="quantity" type="number" value="1"></label><button>Naruči</button></form>
+<p id="order-status" role="status"></p><pre id="order-result"></pre>
+<script>
+document.querySelector('#order').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const f = new FormData(event.target);
+  const body = { email: f.get('email'), items: [{ productId: Number(f.get('productId')), quantity: Number(f.get('quantity')) }] };
+  const r = await fetch('/orders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  document.querySelector('#order-status').textContent = 'HTTP ' + r.status;
+  document.querySelector('#order-result').textContent = JSON.stringify(await r.json(), null, 2);
+});
+</script></html>

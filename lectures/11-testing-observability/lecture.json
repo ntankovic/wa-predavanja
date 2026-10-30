@@ -1,0 +1,12 @@
+{
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 11,
+  "title_hr": "Testiranje, praćenje i dijagnostika rada aplikacije (observability)",
+  "title_en": "Testing and Observability"
+}

@@ -1,0 +1,38 @@
+project:
+  type: book
+
+book:
+  title: Web Applications
+  author: assoc. prof. Nikola Tankovic, PhD
+  subtitle: Faculty of Informatics, Juraj Dobrila University of Pula
+  output-file: web-applications
+  chapters:
+    - index.qmd
+    - lectures/01-introduction/chapter.qmd
+    - lectures/02-backend-architecture/chapter.qmd
+    - lectures/03-api-design/chapter.qmd
+    - lectures/04-persistence/chapter.qmd
+    - lectures/05-transactions-concurrency/chapter.qmd
+    - lectures/06-authentication-authorization/chapter.qmd
+    - lectures/07-security/chapter.qmd
+    - lectures/08-asynchronous-processing/chapter.qmd
+    - lectures/09-reliability/chapter.qmd
+    - lectures/10-performance-scalability/chapter.qmd
+    - lectures/11-testing-observability/chapter.qmd
+    - lectures/12-production/chapter.qmd
+
+format:
+  pdf:
+    documentclass: scrreprt
+    pdf-engine: xelatex
+    papersize: a4
+    toc: true
+    colorlinks: true
+    keep-tex: false
+    include-in-header:
+      text: |
+        \usepackage{needspace}
+        \titlehead{\centering\includegraphics[width=25mm]{assets/shared/fipu-logo.pdf}}
+
+execute:
+  enabled: false

@@ -1,0 +1,282 @@
+[
+  {
+    "slide": 1,
+    "title": "Arhitektura backend aplikacije",
+    "start": 0,
+    "end": 0.5,
+    "minutes": 0.5
+  },
+  {
+    "slide": 2,
+    "title": "Evidencija prisutnosti",
+    "start": 0.5,
+    "end": 1,
+    "minutes": 0.5
+  },
+  {
+    "slide": 3,
+    "title": "Prošli put: kako biste rasporedili POST /orders?",
+    "start": 1,
+    "end": 4,
+    "minutes": 3
+  },
+  {
+    "slide": 4,
+    "title": "Ishodi i predznanje",
+    "start": 4,
+    "end": 6,
+    "minutes": 2
+  },
+  {
+    "slide": 5,
+    "title": "Novi zahtjev: POST /orders",
+    "start": 6,
+    "end": 9,
+    "minutes": 3
+  },
+  {
+    "slide": 6,
+    "title": "Što sve treba napraviti?",
+    "start": 9,
+    "end": 11,
+    "minutes": 2
+  },
+  {
+    "slide": 7,
+    "title": "Naivan handler",
+    "start": 11,
+    "end": 15,
+    "minutes": 4
+  },
+  {
+    "slide": 8,
+    "title": "Predvidite: četiri zahtjeva",
+    "start": 15,
+    "end": 18,
+    "minutes": 3
+  },
+  {
+    "slide": 9,
+    "title": "Provjerimo",
+    "start": 18,
+    "end": 21,
+    "minutes": 3
+  },
+  {
+    "slide": 10,
+    "title": "Jedan handler, sedam poslova",
+    "start": 21,
+    "end": 24,
+    "minutes": 3
+  },
+  {
+    "slide": 11,
+    "title": "Razdvajanje odgovornosti",
+    "start": 24,
+    "end": 27,
+    "minutes": 3
+  },
+  {
+    "slide": 12,
+    "title": "Tko koga poziva",
+    "start": 27,
+    "end": 28,
+    "minutes": 1
+  },
+  {
+    "slide": 13,
+    "title": "Usmjeravanje: metoda i putanja određuju handler",
+    "start": 28,
+    "end": 30,
+    "minutes": 2
+  },
+  {
+    "slide": 14,
+    "title": "Handler: HTTP ulaz i izlaz",
+    "start": 30,
+    "end": 33,
+    "minutes": 3
+  },
+  {
+    "slide": 15,
+    "title": "Servis: poslovna pravila bez HTTP-a",
+    "start": 33,
+    "end": 37,
+    "minutes": 4
+  },
+  {
+    "slide": 16,
+    "title": "Repozitorij: pristup podacima",
+    "start": 37,
+    "end": 40,
+    "minutes": 3
+  },
+  {
+    "slide": 17,
+    "title": "Obavijest: vanjska usluga iza funkcije",
+    "start": 40,
+    "end": 42,
+    "minutes": 2
+  },
+  {
+    "slide": 18,
+    "title": "POST /orders kroz dijelove",
+    "start": 42,
+    "end": 45,
+    "minutes": 3
+  },
+  {
+    "slide": 19,
+    "title": "Vježba: gdje pripada pravilo?",
+    "start": 45,
+    "end": 49,
+    "minutes": 4
+  },
+  {
+    "slide": 20,
+    "title": "Greške prelaze granicu",
+    "start": 49,
+    "end": 52,
+    "minutes": 3
+  },
+  {
+    "slide": 21,
+    "title": "Smjer ovisnosti",
+    "start": 52,
+    "end": 55,
+    "minutes": 3
+  },
+  {
+    "slide": 22,
+    "title": "Ubrizgavanje ovisnosti",
+    "start": 55,
+    "end": 58,
+    "minutes": 3
+  },
+  {
+    "slide": 23,
+    "title": "Dokaz: test pravila bez HTTP-a",
+    "start": 58,
+    "end": 61,
+    "minutes": 3
+  },
+  {
+    "slide": 24,
+    "title": "Zamjena implementacije",
+    "start": 61,
+    "end": 63,
+    "minutes": 2
+  },
+  {
+    "slide": 25,
+    "title": "Ne treba sloj za svaku funkciju",
+    "start": 63,
+    "end": 66,
+    "minutes": 3
+  },
+  {
+    "slide": 26,
+    "title": "Konfiguracija dolazi iz okruženja",
+    "start": 66,
+    "end": 69,
+    "minutes": 3
+  },
+  {
+    "slide": 27,
+    "title": "Tajne",
+    "start": 69,
+    "end": 71,
+    "minutes": 2
+  },
+  {
+    "slide": 28,
+    "title": "Neispravna konfiguracija zaustavlja pokretanje",
+    "start": 71,
+    "end": 73,
+    "minutes": 2
+  },
+  {
+    "slide": 29,
+    "title": "Životni ciklus procesa",
+    "start": 73,
+    "end": 76,
+    "minutes": 3
+  },
+  {
+    "slide": 30,
+    "title": "Uredno gašenje",
+    "start": 76,
+    "end": 80,
+    "minutes": 4
+  },
+  {
+    "slide": 31,
+    "title": "Dva procesa, jedan ruksak",
+    "start": 80,
+    "end": 83,
+    "minutes": 3
+  },
+  {
+    "slide": 32,
+    "title": "Aplikacijski poslužitelj bez stanja",
+    "start": 83,
+    "end": 85,
+    "minutes": 2
+  },
+  {
+    "slide": 33,
+    "title": "Monolit nije pogreška",
+    "start": 85,
+    "end": 87,
+    "minutes": 2
+  },
+  {
+    "slide": 34,
+    "title": "Modularni monolit",
+    "start": 87,
+    "end": 90,
+    "minutes": 3
+  },
+  {
+    "slide": 35,
+    "title": "Isti servis u Fastifyju",
+    "start": 90,
+    "end": 93,
+    "minutes": 3
+  },
+  {
+    "slide": 36,
+    "title": "Što framework preuzima, a što ostaje naše",
+    "start": 93,
+    "end": 95,
+    "minutes": 2
+  },
+  {
+    "slide": 37,
+    "title": "AI kod na pregledu",
+    "start": 95,
+    "end": 99,
+    "minutes": 4
+  },
+  {
+    "slide": 38,
+    "title": "Sažetak",
+    "start": 99,
+    "end": 101,
+    "minutes": 2
+  },
+  {
+    "slide": 39,
+    "title": "Osmislite sljedeći korak",
+    "start": 101,
+    "end": 104,
+    "minutes": 3
+  },
+  {
+    "slide": 40,
+    "title": "Literatura",
+    "start": 104,
+    "end": 105,
+    "minutes": 1
+  }
+]

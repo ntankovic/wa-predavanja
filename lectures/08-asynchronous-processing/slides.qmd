@@ -1,0 +1,76 @@
+---
+title: "Asynchronous Backend Processing"
+lang: en
+author: "assoc. prof. Nikola Tankovic, PhD"
+subtitle: "Faculty of Informatics, Juraj Dobrila University of Pula"
+---
+
+
+## Mark your presence {#attendance .attendance-slide}
+
+::: {.attendance-content}
+[![](assets/attendance-wa.png){width=455 height=455 fig-alt="QR code for marking attendance in the Web Applications course."}](https://bit.ly/wa-tu-sam)
+
+[bit.ly/wa-tu-sam](https://bit.ly/wa-tu-sam)
+:::
+
+::: {.notes}
+Timing: 0.5–1 min (0.5 min).
+Allow half a minute for check-in via the QR code or link.
+:::
+
+## The request we follow
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Outcomes and prerequisites
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Problem and initial implementation
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Execution and failure
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Reason and improved design
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Check for understanding
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::
+
+## Recap and references
+
+<!-- Derive one main idea from the reviewed script. Split execution states across slides. -->
+
+::: {.notes}
+<!-- Add timing, concise teaching cues, questions, misconceptions and a transition. Total: 90–120 minutes. -->
+:::

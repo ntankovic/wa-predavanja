@@ -1,0 +1,12 @@
+{
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 6,
+  "title_hr": "Autentikacija i autorizacija",
+  "title_en": "Authentication and Authorization"
+}

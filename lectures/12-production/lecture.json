@@ -1,0 +1,12 @@
+{
+  "status": "planned",
+  "scaffold": true,
+  "duration_minutes": 105,
+  "target_substantive_slides": {
+    "min": 30,
+    "max": 40
+  },
+  "number": 12,
+  "title_hr": "Implementacija i rad web aplikacije u produkciji",
+  "title_en": "Deployment and Production Web Architecture"
+}

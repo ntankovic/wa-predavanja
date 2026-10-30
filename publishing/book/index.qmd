@@ -1,0 +1,7 @@
+# About this book {.unnumbered}
+
+Web Applications develops backend engineering principles over 12 weeks through one evolving application. Each week asks what actually happens when a request reaches the backend.
+
+Lecturer: assoc. prof. Nikola Tankovic, PhD, Faculty of Informatics, Juraj Dobrila University of Pula.
+
+**This is a structural scaffold.** The lecture sequence is defined, but complete 90–120-minute scripts and corresponding slides have not been authored or reviewed. Develop Croatian content first and translate after review.
