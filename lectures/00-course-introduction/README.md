@@ -81,3 +81,10 @@ Supersedes the missing-Quarto limitation above: Quarto 1.10.18 is installed loca
 - Checks: `just slides 00-course-introduction hr` and `just browser-check 00-course-introduction hr` pass (26 slides; headless shell installed with `just browser-install`). Screenshots of slides 2, 4–6, 8, 12, 14–18, 21, 24 and 25 were reviewed. The slide PDF was not checked. English remains the inherited RS deck and is now further behind the Croatian version.
 
 2026-10-14: koraljni detalji kao u BA uvodu, uz zadržanu paletu: --coral #e4572e, samo ukrasno. Crta ispod naslova (centrirana na slajdu evidencije prisutnosti, izostavljena na BPMN slajdu) i traka slijeva na karticama. Prijašnji CSS spremljen je u scratchpad BA sesije. Headless provjera (hr): PASS.
+
+## Hrvatsko poglavlje (PDF skripta), 2026-11-02
+
+Na nastavnikov zahtjev dodan je `chapter.hr.qmd`, pisani pratitelj uvoda izveden iz hrvatskog deka (v1.5); nema novih pravila, a napomene „treba potvrditi” iz bilješki deka i dalje vrijede za isti tekst. Poglavlje nije u knjizi; `lecture.json` i dalje označava format samo sa slajdovima za knjigu i `verify_builds.py`. Engleskog poglavlja nema. `scripts/build.py all` sada gradi samo jezik koji ima izvor.
+
+- Build: `just lecture 00-course-introduction` → `output/hr/lectures/00-course-introduction.pdf` (12 stranica); sve stranice vizualno pregledane.
+- [ ] Nastavnikov pregled teksta poglavlja.

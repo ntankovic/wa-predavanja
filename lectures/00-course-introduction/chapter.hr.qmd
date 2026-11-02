@@ -1,0 +1,219 @@
+---
+title: "Uvod u kolegij i pravila polaganja"
+lang: hr
+language:
+  crossref-fig-title: "Slika"
+  crossref-fig-prefix: "slika"
+  crossref-tbl-title: "Tablica"
+  crossref-tbl-prefix: "tablica"
+---
+
+## Čemu služi ovaj tekst
+
+Ovo je pisani pratitelj uvodnog predavanja. Opisuje kako je kolegij organiziran, gdje pronaći materijale i pomoć, kako izgleda rad na projektu i kako se kolegij polaže. Tehnički sadržaj počinje u predavanju 01.
+
+Pročitajte ga na početku semestra i vratite mu se prije predaje projekta. Ako se neko pravilo ovdje i na službenim mjestima kolegija razlikuje, vrijedi ono što nastavnik objavi na Moodleu i javnom webu kolegija.
+
+## Kolegij ukratko
+
+### Čime se kolegij bavi
+
+Iz frontenda već znate kako aplikacija prikazuje podatke i kako ih dohvaća, na primjer preko Firebasea. Ovaj kolegij gleda drugu stranu: **što se događa kada zahtjev stigne na backend?** Preglednik poziva backend, a backend bazu podataka; odgovori se vraćaju obrnutim putem (Slika [-@fig-intro-request]).
+
+![Put zahtjeva od preglednika preko backenda do baze. Odgovori se vraćaju obrnutim putem.](assets/wa-request.hr.pdf){#fig-intro-request width=100% fig-pos="H" fig-alt="Preglednik poziva backend, a backend bazu podataka; odgovori se vraćaju obrnutim putem."}
+
+Kroz kolegij se stalno vraćamo istim pitanjima: gdje su pravila aplikacije i njezino stanje? Što ako dva zahtjeva stignu istodobno ili neka komponenta ne odgovori? Ako, na primjer, dva kupca istodobno naruče posljednji artikl, tko mora zaštititi zalihu? Primjer aplikacije za naručivanje služi učenju i nije zadana tema studentskog projekta.
+
+### Nastavnici i komunikacija
+
+| Dio nastave | Nastavnik |
+|:---|:---|
+| Predavanja | izv. prof. dr. sc. Nikola Tanković |
+| Vježbe | Luka Blašković, mag. inf. |
+
+- **Pitanja o kolegiju:** Google Chat, grupa **„FIPU WA”**.
+- **Moodle (e-učenje):** [e-ucenje.unipu.hr](https://e-ucenje.unipu.hr)
+- **Javni web kolegija:** [ntankovic.unipu.hr/wa](https://ntankovic.unipu.hr/wa)
+
+### Plan nastave
+
+Svako tehničko predavanje traje 90–120 minuta, uključujući raspravu i ponavljanje. Predavanja prate razvoj iste aplikacije za naručivanje.
+
+| Tjedan | Tema | Što radimo |
+|:--|:--------|:--------------------------|
+| 01 | Kako web aplikacije rade | Polazimo od poznatog frontenda i Firebasea. Pratimo kako preglednik traži podatke od poslužitelja i kako mu se vraća odgovor. |
+| 02 | Arhitektura backend aplikacije | Razdvajamo kod koji prima zahtjev, provodi pravila aplikacije i pristupa podacima. Na primjeru narudžbe pokazujemo kako organizirati backend koji raste. |
+| 03 | REST i dizajn API-ja | Dogovaramo kako frontend traži podatke i šalje promjene backendu. Oblikujemo adrese, poruke i odgovore na pogreške tako da ih klijent može jasno razumjeti. |
+| 04 | Baze podataka i trajna pohrana | Spremamo proizvode i narudžbe tako da ostanu sačuvani nakon gašenja aplikacije. Upoznajemo osnove PostgreSQL-a i MongoDB-a te uspoređujemo izbor baze za projekt. |
+| 05 | Transakcije i konkurentnost | Istražujemo što se događa kada dva kupca istodobno naruče posljednji artikl. Povezujemo promjene podataka u cjelinu i sprječavamo pogrešne zalihe. |
+| 06 | Autentikacija i autorizacija | Razlikujemo prijavu korisnika od provjere što taj korisnik smije raditi. Štitimo narudžbe tako da korisnik ne može čitati ili mijenjati tuđe podatke. |
+| 07 | Sigurnost web aplikacija | Provjeravamo što se događa kada netko namjerno pošalje neočekivane podatke. Učimo zaštititi unos, lozinke i tajne podatke te prepoznati česte propuste. |
+| 08 | Asinkrona obrada u backendu | Izdvajamo sporije poslove, poput slanja e-pošte i izrade računa, iz obrade korisnikova zahtjeva. Pratimo kako se posao izvršava u pozadini i što ako ne uspije. |
+| 09 | Pouzdanost i obrada pogrešaka | Razmatramo spor odgovor, nedostupnu uslugu i prekinutu vezu. Određujemo kada ponoviti pokušaj i kako spriječiti da ponavljanje dvaput izvrši istu narudžbu. |
+| 10 | Performanse i skalabilnost | Mjerimo gdje aplikacija troši vrijeme prije nego što je ubrzavamo. Istražujemo brži pristup podacima, privremeno čuvanje rezultata i rad više primjeraka backenda. |
+| 11 | Testiranje, praćenje i dijagnostika | Testovima provjeravamo očekivano ponašanje i pogreške. Pomoću zapisa rada i mjerenja rekonstruiramo što se dogodilo kada zahtjev zakaže ili postane spor. |
+| 12 | Implementacija i rad u produkciji | Povezujemo dijelove aplikacije u sustav dostupan korisnicima. Razmatramo postavke, sigurno povezivanje, pokretanje i gašenje te nadogradnje aplikacije. |
+
+## Predavanja i sudjelovanje
+
+**Dolazak na predavanja i vježbe nije obvezan.** Ako dolazite, evidentirajte prisutnost QR kodom ili poveznicom [bit.ly/wa-tu-sam](https://bit.ly/wa-tu-sam) i aktivno sudjelujte: postavljajte pitanja, predvidite rezultat i objasnite svoje odluke. Evidencija ne predstavlja bodovni prag.
+
+AI dobro objašnjava pojmove, a materijali i, gdje postoje, snimke dostupni su i bez dolaska. Ako na predavanju samo slušate, oni vam mogu biti jednako dobri. Uživo dobivate nešto drugo:
+
+- **odgovor na vlastito pitanje**, dok zabuna nastaje i na vašem primjeru;
+- **prioritete**: što je bitno za projekt, obranu i usmeni, a što je samo zanimljivo;
+- **razmišljanje naglas**: kako se rješava problem bez gotovog odgovora, s kompromisima i greškama;
+- **raspravu s kolegama**: isti problem ima više obranjivih rješenja, a obrana traži upravo to.
+
+| Ako ste… | Predavanje vam daje… |
+|:---|:---|
+| samouki, s AI-jem i materijalima | provjeru razumijete li zaista; dođite barem kad zapnete |
+| netko kome treba ritam | strukturu tjedna i manje gradiva za kraj semestra |
+| tihi, ne volite pitati naglas | slušanje bez pritiska; pitanja možete postaviti u Google Chatu FIPU WA |
+| zaposleni ili s obvezama | materijale i, gdje postoje, snimke za samostalan rad |
+| usmjereni na ocjenu | način razmišljanja koji se traži na obrani i usmenom ispitu |
+
+Dođite kad vam to nešto daje. Ako dođete, sudjelujte.
+
+## Predznanje i tehnologije
+
+### Predznanje
+
+Oslanjamo se na programiranje, JSON i iskustvo s frontend aplikacijama: **JavaScript**, **Vue**, **Pinia** i **Firebase**. Ako je dio toga zahrđao, obnovite ga na početku semestra.
+
+**HTTP učimo od početka.** Ne pretpostavljamo znanje o HTTP-u, TCP-u ni mrežnoj komunikaciji iza poziva Firebase biblioteke. Kratka pojašnjenja dajemo kada su potrebna za backend problem.
+
+### Tehnologije u primjerima
+
+| Dio aplikacije | Tehnologija |
+|:---|:---|
+| Frontend | Vue 3 i Pinia |
+| API i backend | REST API i Node.js |
+| Baza podataka | PostgreSQL ili MongoDB |
+
+Obradit ćemo osnove obiju baza, a za projekt birate jednu i obrazlažete izbor prema svojim podacima i načinu pristupa. Redis, redove poslova i Docker uvodimo samo kada pomažu objasniti konkretan mehanizam.
+
+Za korištenje tehnologija u projektu koje se razlikuju od onih s predavanja i vježbi potrebno je **prethodno izričito odobrenje nastavnika**. To što se koncepti prenose na druge jezike i frameworkove ne znači da ih smijete samostalno odabrati za projekt.
+
+## AI i provjera razumijevanja
+
+AI smijete koristiti, ali **vi provjeravate i objašnjavate rezultat**. Podjela uloga prikazana je na slici [-@fig-intro-ai]: vi određujete zahtjeve i arhitekturu, AI predlaže kod, a vi ga provjeravate, testirate i obrazlažete odluke.
+
+![Vi vodite rad, AI predlaže. Odgovornost za kod i odluke ostaje na vama.](assets/ai-responsibility.hr.pdf){#fig-intro-ai width=100% fig-pos="H" fig-alt="Student određuje zahtjeve i arhitekturu, AI predlaže kod, student provjerava, testira i obrazlaže odluke."}
+
+Ako ste koristili AI, na obrani pokažite konkretnu provjeru koda, slučaj u kojem pretpostavke ne vrijede i moguću jednostavniju izvedbu. Cilj je samostalno obrazloženje i dokaz ponašanja, a ne količina generiranog koda.
+
+**Primjer.** AI je u sučelju sakrio gumb za tuđu narudžbu. Je li time spriječen izravan zahtjev prema API-ju? Kako biste to provjerili?
+
+**Zapise razgovora s AI-jem ne predajete.** Dovoljni su commitovi i obrana. Po želji u README-u projekta možete dodati kratak odjeljak „Uporaba AI-ja”: koje ste alate koristili, za što i kako ste provjerili rezultat.
+
+**Preporučeni alati.** Za rad na kodu projekta, objašnjenja i provjere preporučuje se [Claude Code](https://code.claude.com/docs/en/overview); za ideje za sučelje i interaktivne prototipove [Claude Design](https://claude.com/product/design); za razumijevanje promjena i pregled koda [Codex](https://learn.chatgpt.com/docs/code-review). Za istraživanje su dostupni i otvoreni modeli, na primjer [Qwen3-Coder](https://github.com/QwenLM/Qwen3-Coder) i [DeepSeek-Coder-V2](https://github.com/deepseek-ai/DeepSeek-Coder-V2). Njihove su težine dostupne za preuzimanje, ali za pokretanje trebaju odgovarajući alat i računalo, a licence ovise o modelu. Izbor AI alata ne mijenja pravilo o odobrenju projektnih tehnologija. Alat predlaže — vi provjeravate i objašnjavate.
+
+## Projekt
+
+### Timski rad i individualni doprinos
+
+Projekt izrađujete **u timu** i **kontinuirano**: **nekoliko commitova tjedno** kroz najmanje **2–3 tjedna**. Autentičnost commitova se provjerava, a prati se rad svakog člana. Projekt izrađen u nekoliko dana ili s jednim commitom ne zadovoljava traženi način rada.
+
+![Izmišljeni primjer povijesti commitova. Uz svaki commit vidljivi su autor i opis promjene.](assets/github-history.hr.pdf){#fig-intro-commits width=100% fig-pos="H" fig-alt="Izmišljeni primjer šest commitova: Ana tri, Marko dva, Iva jedan. Uz svaki commit vidljivi su autor i opis promjene."}
+
+Broj commitova sam po sebi ne pokazuje kvalitetu doprinosa; pregledava se sadržaj promjena. Timski rezultat ne zamjenjuje individualno razumijevanje: budite spremni objasniti vlastite promjene.
+
+### Nadogradnja ranije aplikacije
+
+Možete zatražiti da projekt bude **nadogradnja aplikacije s prethodnog kolegija**, ako je ta aplikacija ocijenjena ocjenom **vrlo dobar (4) ili izvrstan (5)**. U zahtjevu nastavniku predstavite postojeću aplikaciju i predložite što biste nadogradili. To nije automatski prijenos stare ocjene; ostala pravila projekta i odobravanja tehnologija i dalje vrijede.
+
+### Ideje za projekt s AI funkcijom
+
+Sljedeće ideje polazišta su za dogovor opsega, a ne gotove specifikacije. U njima AI koristi krajnji korisnik aplikacije, a ne samo programer pri pisanju koda.
+
+| Skupina | Ideja | AI funkcija | Što pamti backend |
+|:-----|:------|:----------|:--------|
+| Osobni pomoćnici | 01 · Ormar koji pamti | slaže odjevne kombinacije iz korisnikova ormara prema prilici i stilu | fotografije odjeće, favoriti, povijest kombinacija |
+| | 02 · Grad po mom tempu | predlaže šetnju prema interesima, vremenu i tempu; korisnik uređuje rutu | mjesta, spremljene rute, recenzije, plan obilaska |
+| | 03 · Trener za usmeni | postavlja potpitanja prema učitanim materijalima | materijali, pokušaji, povratne informacije, napredak |
+| | 04 · Muzej osobnih predmeta | od fotografije i uspomene oblikuje priču za obiteljsku zbirku | predmeti, verzije priča, dopuštenja za dijeljenje |
+| Svakodnevica i zajednica | 05 · Hladnjak bez zaborava | predlaže obroke od postojećih namirnica i popis kupnje | zalihe, rokovi, plan obroka, zajednički popisi |
+| | 06 · Festival po mom ukusu | sastavlja osobni raspored i objašnjava preporuke | program, omiljeni događaji, spremljeni rasporedi |
+| | 07 · Klub čitatelja | povezuje interese članova, predlaže knjigu i pitanja za raspravu | knjige, grupe, glasovanja, susreti |
+| | 08 · Zeleni dnevnik | pomaže voditi dnevnik biljaka i predlaže što pratiti | biljke, fotografije, podsjetnici, opažanja |
+| Podaci koji pričaju priču | 09 · Detektiv kućnih troškova | razvrstava stavke računa i objašnjava promjene potrošnje | računi, kategorije, ispravci, mjesečni pregledi |
+| | 10 · Tim za dobru stvar | povezuje volontere s lokalnim akcijama | profili, akcije, prijave, odobravanja, obavijesti |
+| | 11 · Priče mog kvarta | od odobrenih priča stanovnika slaže tematske ture | lokacije, priče, izvori, uredničko odobravanje |
+| | 12 · Od ideje do hobija | pretvara ideju u male korake i prilagođava plan | projekti, zadaci, materijali, dnevnik napretka |
+
+Za početak odaberite jednu glavnu AI funkciju i nekoliko povezanih korisničkih radnji. Projekt treba stvarnu pohranu, provjeru pristupa i smisleno ponašanje kada AI odgovor kasni ili ne uspije. Poziv modela i tajni ključ ostaju na backendu. Korisnik može pregledati, ispraviti i potvrditi AI prijedlog. Ideje ne uvode nove obvezne tehnologije ni plaćenu pretplatu; odstupanja od nastavnih tehnologija i dalje traže odobrenje nastavnika.
+
+## Kako položiti kolegij
+
+### Predaja projekta: brojite radne dane
+
+**Gotov projekt uvjet je za pristup ispitu.** Projekt predajete najmanje **3 radna dana prije ispitnog roka**. Slijede **obrana projekta i usmeni ispit**.
+
+Tri radna dana nisu tri kalendarska dana. Za ispit u srijedu predaja je najkasnije prethodni petak: utorak je prvi, ponedjeljak drugi, a petak treći radni dan unatrag, dok se subota i nedjelja ne broje (Slika [-@fig-intro-calendar]). Blagdani se također ne broje kao radni dani. Planirajte završetak i provjeru projekta prije krajnjeg roka.
+
+![Primjer brojanja radnih dana unatrag od ispita, bez blagdana.](assets/submission-calendar.hr.pdf){#fig-intro-calendar width=100% fig-pos="H" fig-alt="Kalendarski primjer: za ispit u srijedu predaja je najkasnije prethodni petak. Utorak je prvi, ponedjeljak drugi, petak treći radni dan unatrag. Subota i nedjelja ne broje se. Primjer je bez blagdana."}
+
+### Ako projekt ne obranite ove godine
+
+Akademska godina završava **30. rujna**. Godišnji odmor nastavnika traje od 20. srpnja do 25. kolovoza (Slika [-@fig-intro-year]). Taj datum nije zajamčeni ispitni termin, a godišnji odmor nije službena promjena rasporeda ispitnih rokova.
+
+![Kraj akademske godine i godišnji odmor nastavnika.](assets/academic-year.hr.pdf){#fig-intro-year width=100% fig-pos="H" fig-alt="Godišnji odmor nastavnika: od 20. srpnja do 25. kolovoza. Akademska godina završava 30. rujna."}
+
+Neuspješan pojedinačni izlazak na ispit ne znači odmah novu temu. Ali ako projekt ne obranite do završetka akademske godine:
+
+- ponovno prijavljujete projekt,
+- izrađujete **novi projekt samostalno** i branite ga.
+
+Prijedlog novog projekta odobrava nastavnik.
+
+### Znanje za usmeni ispit
+
+Za usmeni ispit postoji dokument „Pitanja za usmeni ispit – Web aplikacije”. **Popis pitanja je vodilja, a ne iscrpan popis** ni zbirka odgovora za učenje napamet. Pokriva ove cjeline:
+
+- mreža, HTTP/HTTPS, CORS i REST;
+- Express.js, middleware i autentikacija;
+- Vue 3, komponente, usmjeravanje i stanje;
+- Axios, osnove PostgreSQL-a i MongoDB-a te operacije nad podacima;
+- praktična primjena i sve što koristite u projektu.
+
+Opseg uključuje **službenu literaturu, predavanja i vježbe**. Obuhvaća i JavaScript te poznati frontend, pa obnovite predznanje i povežite ga s backendom. Cjeline uključuju usporedbe pristupa i praktična pitanja, primjerice REST, SOAP i GraphQL, obradu grešaka i implementaciju funkcionalnosti.
+
+## Kako se pripremiti za obranu
+
+### Pokažite razumijevanje projekta
+
+Na obrani ne pokazujete samo da projekt radi, nego i da razumijete zašto radi. Slika [-@fig-intro-evidence] prikazuje tri koraka: predvidite očekivani rezultat, pokažite kod i stvarni zahtjev, a zatim objasnite opaženi rezultat.
+
+![Tri koraka objašnjenja projekta.](assets/wa-evidence.hr.pdf){#fig-intro-evidence width=100% fig-pos="H" fig-alt="Predvidi očekivani rezultat, pokaži kod i stvarni zahtjev, objasni opaženi rezultat."}
+
+Pratite jednu funkcionalnost kroz cijelu aplikaciju: **klik → HTTP zahtjev → backend → baza → prikaz**. Pokažite karticu **Network** u alatima preglednika, relevantan kod te uspješan ili neuspješan slučaj. Povežite URL, metodu, zaglavlja, tijelo, status i odgovor s konkretnim kodom. Za dijagnostiku povežite karticu Network, konzolu i backend logove.
+
+Budite spremni objasniti arhitekturu, organizaciju komponenti, konfiguraciju i postavljanje aplikacije. Na testnim podacima možete pokazati neispravan izravan API zahtjev, pristup tuđem zapisu, spor backend ili dvostruki klik na Spremi; odaberite primjer koji vaš projekt doista podržava. Pitanja se biraju prema funkcionalnostima vašeg projekta.
+
+### Dorada projekta: objasnite izmjenu
+
+Umjesto izmjene koda uživo objašnjavate doradu na vlastitom projektu (Slika [-@fig-intro-change]): gdje bi izmjena išla (Vue komponenta, ruta, middleware, baza), kako biste je proveli i koje su posljedice za greške, stanje i testiranje. Nastavnik zatim postavlja potpitanja. Manju izmjenu po potrebi možete pokazati u kodu, bez AI alata, lokalno na testnim podacima.
+
+![Tri koraka objašnjenja izmjene na vlastitom projektu.](assets/wa-design-change.hr.pdf){#fig-intro-change width=100% fig-pos="H" fig-alt="Tri koraka: gdje bi išla izmjena u dijelovima aplikacije i datotekama; kako biste je proveli; koje su posljedice za greške, stanje i testiranje."}
+
+Primjeri pitanja (pitanja se biraju prema projektu, pa ih ne dobiva svaki student):
+
+- Kako biste dodali **obvezno polje** od obrasca do baze? Što se događa sa starim zapisima bez tog polja?
+- Gdje biste provjerili da korisnik mijenja **samo svoje zapise**?
+- Što se događa ako se isti zahtjev za spremanje **pošalje dvaput**?
+- Što ako backend ne odgovori i kako biste provjerili da izmjena radi?
+
+## Kontrolni popis
+
+Prije prvog tehničkog predavanja trebali biste znati:
+
+- [ ] gdje se nalaze materijali i pravila kolegija (Moodle, javni web kolegija);
+- [ ] gdje postaviti pitanje (Google Chat, „FIPU WA”);
+- [ ] koje tehnologije koristimo i da za druge trebate prethodno odobrenje nastavnika;
+- [ ] da je AI dopušten, ali da odgovarate za kod i odluke te ih morate znati provjeriti;
+- [ ] da projekt radite u timu i kontinuirano, s nekoliko commitova tjedno kroz najmanje 2–3 tjedna;
+- [ ] da projekt predajete najmanje 3 radna dana prije ispitnog roka, a slijede obrana i usmeni ispit;
+- [ ] što se događa ako projekt ne obranite do 30. rujna.
+
+Sljedeće predavanje polazi od nečega što već znate: kliknemo „Prikaži proizvode” i čekamo da se podaci pojave. **Odakle dolaze podaci? Što se događa između klika i prikaza?**

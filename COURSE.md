@@ -290,3 +290,5 @@ The academic year ends on 30 September. Lecturer annual leave: 20 July–25 Augu
 ## Reusing a previous course application — lecturer decision, 2026-10-07
 
 Students may request to extend an application from a previous course if it received at least very good (4), i.e. grade 4 or 5. This is a request to the lecturer, not automatic reuse approval or transfer of the previous grade. Orientation includes 12 optional project ideas with end-user AI features; these are suggestions, not mandatory assignments.
+
+- Lecturer decision 2026-11-02: Lecture 00 also has a Croatian student chapter (`chapter.hr.qmd`), built as a standalone PDF and published on the course site; it stays out of the book, and there is no English chapter yet.
