@@ -952,6 +952,54 @@ Napomena: ovo je jednostavan GET pa nema preflighta. Za druge zahtjeve (npr. JSO
 Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).
 :::
 
+## Kolačići na drugo podrijetlo {#s27cred .credentials-slide}
+
+:::: {.columns}
+::: {.column width="47%"}
+**Naš kod:** opcija za `fetch`, ne zaglavlje
+
+```javascript
+fetch("http://localhost:3000/cart", {
+  credentials: "include",
+});
+```
+
+[axios: `withCredentials: true`]{.axios-note}
+
+- `"same-origin"` (default): kolačići samo za isto podrijetlo
+- `"include"`: i za drugo podrijetlo
+:::
+
+::: {.column width="53%"}
+**Backend:** zaglavlja odgovora
+
+```{.http code-line-numbers="false"}
+Access-Control-Allow-Origin: http://localhost:5173
+Access-Control-Allow-Credentials: true
+```
+
+- podrijetlo točno navedeno, **ne `*`**
+- bez oba zaglavlja naš kod ne dobiva odgovor
+:::
+::::
+
+::: {.credentials-rule}
+Kolačić je poslan i zahtjev obrađen već zbog `credentials`. Zaglavlja odlučuju samo smije li naš kod **pročitati** odgovor.
+:::
+
+::: {.notes}
+Skripta: [Kolačići na drugo podrijetlo](chapter.hr.qmd#s27cred).
+Vrijeme: 99–101 min (2 min).
+
+Lijevo je ono što piše frontend, desno ono što šalje backend. `credentials` ne putuje mrežom: pregledniku kaže smije li dodati zaglavlje `Cookie` i spremiti `Set-Cookie`. Treća vrijednost, `"omit"`, nikad ne šalje kolačiće. U axiosu je isto `withCredentials: true`; zadano `false` odgovara `"same-origin"`.
+
+Pitanje: Frontend šalje `credentials: "include"`, a backend vraća `Access-Control-Allow-Origin: *` i `Access-Control-Allow-Credentials: true`. Što dobiva naš kod i je li backend obradio zahtjev?
+
+Očekivano obrazloženje: Naš kod dobiva TypeError jer uz kolačiće `*` ne vrijedi. Backend je ipak dobio kolačić i obradio zahtjev. Provjerit ćemo u simulatoru.
+
+Izvori: [MDN: RequestInit credentials](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit#credentials); [MDN: Access-Control-Allow-Credentials](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Credentials).
+:::
+
 ## Simulator: kolačić i CORS {#s27b .sim-slide}
 
 ```{=html}
@@ -961,7 +1009,7 @@ Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US
 
 ::: {.notes}
 Skripta: [Simulator: kolačić i CORS](chapter.hr.qmd#s27b).
-Vrijeme: 99–102 min (3 min).
+Vrijeme: 101–103 min (2 min).
 
 Simulator je pojednostavljen model ponašanja preglednika: samo jednostavni zahtjevi (bez preflighta); `fetch` sa zadanim `credentials: 'same-origin'` ili s `'include'`. Početno stanje: stranica s :3000, credentials 'same-origin', bez CORS zaglavlja. Prije svakog klika pitajte što će se dogoditi u koracima 1 i 4, pa tek onda kliknite.
 
@@ -969,7 +1017,7 @@ Simulator je pojednostavljen model ponašanja preglednika: samo jednostavni zaht
 2. Isto, ali Access-Control-Allow-Origin: http://127.0.0.1:5173. Očekivano: i dalje TypeError, jer localhost i 127.0.0.1 nisu isto podrijetlo iako su isto računalo. Zatim odaberite http://localhost:5173: čitanje uspijeva.
 3. Stranica s :3000, POST /login, pa GET /cart. Očekivano: preglednik spremi sid=abc123 i sam ga šalje u Cookie zaglavlju; backend preko njega pronalazi košaricu.
 4. Kolačić je spremljen; prebacite na stranicu s :5173 (Access-Control-Allow-Origin: http://localhost:5173) i GET /cart. Očekivano: CORS dopušta čitanje, ali backend vraća 401 jer `fetch` na drugo podrijetlo prema zadanom ne šalje kolačiće. CORS nije prijava.
-5. Isto, ali credentials 'include'. Očekivano: preglednik sada šalje Cookie i backend vraća košaricu, ali naš kod dobiva TypeError dok backend ne pošalje i `Access-Control-Allow-Credentials: true`. Uz `*` ne prolazi ni tada: s kolačićima podrijetlo mora biti navedeno točno. Istaknite: kolačić je poslan i backend je zahtjev obradio i kad čitanje nije dopušteno.
+5. Isto, ali credentials 'include' (pravila s prethodnog slajda). Provjerite odgovor na pitanje s prethodnog slajda: `*` i Allow-Credentials daju TypeError, a backend je ipak dobio kolačić. Zatim točno podrijetlo: čitanje uspijeva.
 6. curl, Access-Control-Allow-Origin ne šalje, GET /products. Pitanje: Može li izravan klijent pročitati odgovor iako CORS ne dopušta pristup iz preglednika? Očekivano: da; CORS provodi preglednik, ne backend. Backend treba vlastite provjere.
 
 Napomena: kolačić je vezan uz ime domaćina, ne uz port, pa bi ga preglednik slao i stranici na :5173. `credentials` određuje šalje li `fetch` kolačiće i prihvaća li Set-Cookie: 'omit' nikad, 'same-origin' (zadano) samo za isto podrijetlo, 'include' uvijek. Atribut SameSite i zaštitu od CSRF-a obrađujemo u predavanju o sigurnosti; :5173 i :3000 na localhostu su isto mjesto (*same-site*), pa SameSite ovdje ne blokira slanje.
@@ -987,7 +1035,7 @@ Mjerimo određenu granicu; ne nazivamo sve „sporim serverom”.
 
 ::: {.notes}
 Skripta: [Gdje odlazi vrijeme?](chapter.hr.qmd#s28).
-Vrijeme: 102–104 min (2 min).
+Vrijeme: 103–105 min (2 min).
 
 Pitanje: Je li vrijeme do prvog bajta jednako vremenu dohvata iz baze?
 
@@ -1009,7 +1057,7 @@ Ne dokazuje da backend nije radio.
 
 ::: {.notes}
 Skripta: [Bez odgovora: što se doista dogodilo?](chapter.hr.qmd#s29).
-Vrijeme: 104–107 min (3 min).
+Vrijeme: 105–108 min (3 min).
 
 Pitanje: Koji dokaz bi razlikovao izgubljen zahtjev od izgubljenog odgovora?
 
@@ -1031,7 +1079,7 @@ U paru: **hipoteza + dokaz koji je može opovrgnuti**.
 
 ::: {.notes}
 Skripta: [Vježba: locirajte sljedeću provjeru](chapter.hr.qmd#s32).
-Vrijeme: 107–111 min (4 min).
+Vrijeme: 108–111 min (3 min).
 
 Pitanje: Za svaki redak odaberite jednu provjeru i jedno alternativno objašnjenje.
 

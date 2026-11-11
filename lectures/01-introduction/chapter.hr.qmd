@@ -922,9 +922,40 @@ Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US
 >
 > **Očekivano obrazloženje:** Ne. Vratio je 200; čitanje je blokirao preglednik jer odgovor ne dopušta podrijetlo :3001.
 
+## Kolačići na drugo podrijetlo {#s27cred}
+
+> **Vrijeme za nastavu:** 99–101 min (2 min).
+
+Zadana vrijednost opcije `credentials` u pozivu `fetch` je `"same-origin"`: preglednik šalje kolačiće i sprema `Set-Cookie` samo kad zahtjev ide na isto podrijetlo. Ako frontend na `http://localhost:5173` poziva backend na `http://localhost:3000`, kolačić sesije se ne šalje i backend ne zna tko je korisnik. Da bi ga slao, naš kod mora to izričito zatražiti:
+
+```javascript
+fetch("http://localhost:3000/cart", {
+  credentials: "include",
+});
+```
+
+`credentials` nije HTTP zaglavlje i ne putuje mrežom. To je uputa pregledniku smije li zahtjevu dodati zaglavlje `Cookie` i spremiti kolačić iz odgovora. Vrijednost `"omit"` nikad ne šalje kolačiće. Biblioteka axios za isto koristi opciju `withCredentials: true`; zadana vrijednost `false` ponaša se kao `"same-origin"`.
+
+Da bi naš kod smio pročitati takav odgovor, backend mora poslati dva zaglavlja:
+
+```http
+Access-Control-Allow-Origin: http://localhost:5173
+Access-Control-Allow-Credentials: true
+```
+
+Uz kolačiće `*` nije dopušten: podrijetlo mora biti navedeno točno. Ako bilo što od toga nedostaje, `fetch` završava s `TypeError`, kao kod običnog CORS-a.
+
+Važno je što se dogodilo prije te provjere. Kolačić je poslan već zbog `credentials: "include"`, a backend je zahtjev obradio. CORS zaglavlja odlučuju samo smije li naš kod pročitati odgovor. Zato backend ne smije pretpostaviti da zahtjev s ispravnim kolačićem dolazi s njegova frontenda; o tome više u predavanju o sigurnosti.
+
+Izvori: [MDN: RequestInit credentials](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit#credentials); [MDN: Access-Control-Allow-Credentials](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Credentials).
+
+> **Za nastavnika:** Frontend šalje `credentials: "include"`, a backend vraća `Access-Control-Allow-Origin: *` i `Access-Control-Allow-Credentials: true`. Što dobiva naš kod i je li backend obradio zahtjev?
+>
+> **Očekivano obrazloženje:** Naš kod dobiva `TypeError` jer uz kolačiće `*` ne vrijedi. Backend je ipak dobio kolačić i obradio zahtjev.
+
 ## Simulator: kolačić i CORS {#s27b}
 
-> **Vrijeme za nastavu:** 99–102 min (3 min).
+> **Vrijeme za nastavu:** 101–103 min (2 min).
 
 Kolačić i CORS najlakše je razlikovati kad ih promatramo na istim zahtjevima. U HTML prezentaciji ovog predavanja nalazi se simulator: odaberemo tko šalje zahtjev prema `http://localhost:3000` (stranica s istog podrijetla, stranica s `http://localhost:5173` ili `curl`), što backend šalje u `Access-Control-Allow-Origin` te jedan od zahtjeva `GET /products`, `POST /login` i `GET /cart`. Simulator prikazuje četiri koraka: zahtjev koji preglednik šalje, obradu na backendu, odgovor i ono što dobiva naš JavaScript.
 
@@ -936,7 +967,7 @@ Simulator je pojednostavljen model. Pokriva samo jednostavne zahtjeve, bez prefl
 2. **Pogrešno dopušteno podrijetlo.** `Access-Control-Allow-Origin: http://127.0.0.1:5173` ne dopušta stranicu s `http://localhost:5173`: ime domaćina je drugačije, iako oba imena vode na isto računalo. Podrijetlo se mora točno podudarati.
 3. **Prijava na istom podrijetlu.** Odgovor na `POST /login` sadrži `Set-Cookie: sid=abc123`; preglednik ga spremi i sam doda `Cookie: sid=abc123` u sljedeći `GET /cart`. Backend preko te vrijednosti pronalazi sesiju.
 4. **Dopušten CORS, ali bez kolačića.** Sa stranice na `http://localhost:5173` i uz ispravno dopuštenje naš kod čita odgovor, ali to je `401`: `fetch` na drugo podrijetlo prema zadanom ne šalje kolačiće, pa backend ne zna čija je košarica. CORS ne prijavljuje korisnika.
-5. **Kolačići na drugo podrijetlo.** Uz `credentials: 'include'` preglednik šalje `Cookie: sid=abc123` i backend vraća košaricu. Naš kod je ipak čita tek ako odgovor sadrži točno podrijetlo u `Access-Control-Allow-Origin` (ne `*`) i `Access-Control-Allow-Credentials: true`. Kolačić je poslan i zahtjev obrađen i kad čitanje nije dopušteno.
+5. **Kolačići na drugo podrijetlo.** Uz `credentials: 'include'` preglednik šalje `Cookie: sid=abc123` i backend vraća košaricu. Naš kod je čita tek uz točno podrijetlo i `Access-Control-Allow-Credentials: true`, kako je opisano u prethodnom odjeljku.
 6. **Izravni klijent.** `curl` čita odgovor bez obzira na CORS zaglavlja, jer CORS provodi preglednik. Backend zato ne smije računati na CORS kao zaštitu podataka.
 
 Kolačić je vezan uz ime domaćina, a ne uz port. Atribut `SameSite` i zaštitu od lažiranih zahtjeva (CSRF) obrađujemo u predavanju o sigurnosti.
@@ -949,7 +980,7 @@ Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US
 
 ## Gdje odlazi vrijeme? {#s28}
 
-> **Vrijeme za nastavu:** 102–104 min (2 min).
+> **Vrijeme za nastavu:** 103–105 min (2 min).
 
 Vrijeme korisničkog doživljaja uključuje pripremu veze kada je potrebna, prijenos, čekanje obrade i baze, čitanje tijela te rad prikaza. TTFB (Time to First Byte) je vrijeme do prvog primljenog bajta odgovora; nije čisto mjerenje CPU vremena backenda. Mreža, posrednici i čekanje utječu na opažanje.
 
@@ -969,7 +1000,7 @@ Izvori: [MDN: Time to First Byte](https://developer.mozilla.org/en-US/docs/Gloss
 
 ## Bez odgovora: što se doista dogodilo? {#s29}
 
-> **Vrijeme za nastavu:** 104–107 min (3 min).
+> **Vrijeme za nastavu:** 105–108 min (3 min).
 
 U ovoj varijanti backend je završio dohvat, ali odgovor nije u cijelosti stigao pregledniku. Korisnik vidi neuspjeh, premda je poslužitelj obavio čitanje. Moguća je i drukčija varijanta: zahtjev nikada nije stigao. Iz istog vanjskog opažanja ne smijemo proizvoljno odabrati jedan uzrok.
 
@@ -989,7 +1020,7 @@ Ne dokazuje da backend nije radio.
 
 ## Vježba: locirajte sljedeću provjeru {#s32}
 
-> **Vrijeme za nastavu:** 107–111 min (4 min).
+> **Vrijeme za nastavu:** 108–111 min (3 min).
 
 Parovi dobiju dvije minute da za svaki redak predlože sljedeću provjeru. Ne tražimo konačnu dijagnozu na temelju nedovoljnih podataka. Za prvi slučaj provjeravaju poziva li se funkcija, je li došlo do ranije JavaScript greške i filtrira li Network prikaz. Za prazan niz provjeravaju ugovor i stvarni podatkovni rezultat. Za primljene proizvode pregledavaju mapiranje, stanje i prikaz.
 

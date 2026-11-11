@@ -171,7 +171,7 @@
 .reveal .cc-sim .cc-trace { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:10px; min-height:530px; }
 .reveal .cc-sim .cc-step { border:1px solid #d4e3ec; border-radius:12px; background:#fafcfd; padding:8px 12px; overflow:hidden; }
 .reveal .cc-sim h3 { margin:0 0 6px; font-size:16px; color:#1585b4; text-transform:none; font-weight:700; }
-.reveal .cc-sim .cc-line { font-family:Menlo, Consolas, monospace; font-size:15.5px; white-space:pre-wrap; word-break:break-all; min-height:1.2em; }
+.reveal .cc-sim .cc-line { font-family:Menlo, Consolas, monospace; font-size:15.5px; white-space:pre-wrap; overflow-wrap:anywhere; min-height:1.2em; }
 .reveal .cc-sim .cc-strong { font-weight:700; }
 .reveal .cc-sim .cc-hl { color:#105d80; background:#e7f3fb; border-radius:4px; padding:0 4px; margin-left:-4px; }
 .reveal .cc-sim .cc-good { color:#1f6447; font-weight:700; }
@@ -184,3 +184,15 @@
 .reveal .cc-sim .cc-lock { width:20px; height:20px; fill:#d5ad70; stroke:#795219; stroke-width:2; }
 .reveal .cc-sim .cc-lock path { stroke-width:2.4; stroke-linecap:round; }
 .reveal .cc-sim .cc-check { margin-top:5px; padding-top:5px; border-top:1px solid #d4e3ec; font-size:13px; }
+.reveal .cc-sim .cc-code { color:#594079; font-size:14px; padding-bottom:3px; }
+.reveal .cc-sim .cc-out > .cc-code + .cc-note { margin:0 0 5px; }
+.reveal .cc-sim .cc-opt small { display:block; font-size:12px; color:#627786; line-height:1.15; }
+.reveal .credentials-slide h2 { margin-bottom:0.3em; }
+.reveal .credentials-slide .column > p { font-size:26px; margin:0 0 8px; }
+.reveal .credentials-slide pre { font-size:0.56em; margin:0 0 10px; }
+.reveal .credentials-slide li { font-size:25px; line-height:1.3; }
+.reveal .credentials-slide .axios-note { font-size:19px; color:#536b7b; margin:0 0 6px; }
+.reveal .credentials-rule { margin-top:34px; padding:12px 18px; border-left:5px solid #c97a1e; background:#fff2df; border-radius:10px; }
+.reveal .credentials-rule p { margin:0; font-size:26px; line-height:1.35; }
+.reveal .credentials-slide pre.http { width:100%; box-sizing:border-box; padding:10px 12px; border:1px solid #d0d7de; border-radius:4px; background:#fff; box-shadow:none; color:#003b4f; }
+.reveal .credentials-slide pre.http code { padding:0; background:transparent; }

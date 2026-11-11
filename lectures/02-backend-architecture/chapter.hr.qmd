@@ -705,7 +705,7 @@ Framework uklanja ponavljajući HTTP kod i donosi provjerena rješenja za rubne 
 
 > **Za nastavnika:** Naglasite prenosivost: student koji razumije ovu tablicu prepoznat će iste dijelove u drugom ekosustavu pod drugim imenima.
 
-## AI kod na pregledu {#s34}
+## Što ne valja s ovim AI kodom? {#s34}
 
 > **Vrijeme za nastavu:** 95–99 min (4 min).
 

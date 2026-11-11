@@ -1,6 +1,6 @@
 // Simulator kolačića i CORS-a za Predavanje 01 (slajd s27b).
 // Model namjerno pokriva samo osnovni slučaj: jednostavni zahtjevi (bez preflighta),
-// fetch s credentials: 'same-origin' (zadano) ili 'include'. Ponašanje prema Fetch standardu i MDN-u.
+// fetch s credentials: 'same-origin' (default) ili 'include'. Ponašanje prema Fetch standardu i MDN-u.
 (function () {
   const root = document.getElementById('cc-sim');
   if (!root) return;
@@ -18,8 +18,8 @@
     any: { label: '*', value: '*' },
   };
   const CRED = {
-    'same-origin': { label: "'same-origin' (zadano)" },
-    include: { label: "'include'" },
+    'same-origin': { label: "'same-origin' (default)", sub: 'axios: withCredentials: false' },
+    include: { label: "'include'", sub: 'axios: withCredentials: true' },
   };
   const SID = 'abc123';
   const state = { client: 'same', acao: 'none', cred: 'same-origin', acac: false, jar: null };
@@ -30,14 +30,14 @@
 
   function radios(name, options) {
     return Object.entries(options).map(([key, o]) =>
-      `<label class="cc-opt"><input type="radio" name="${name}" value="${key}"${state[name] === key ? ' checked' : ''}><span>${esc(o.label)}</span></label>`
+      `<label class="cc-opt"><input type="radio" name="${name}" value="${key}"${state[name] === key ? ' checked' : ''}><span>${esc(o.label)}${o.sub ? `<small>${esc(o.sub)}</small>` : ''}</span></label>`
     ).join('');
   }
 
   root.innerHTML = `
     <div class="cc-controls">
       <fieldset><legend>Tko šalje zahtjev na :3000?</legend>${radios('client', CLIENTS)}</fieldset>
-      <fieldset><legend>fetch(url, { credentials })</legend>${radios('cred', CRED)}</fieldset>
+      <fieldset><legend>Opcija u JS-u: fetch credentials / axios</legend>${radios('cred', CRED)}</fieldset>
       <fieldset><legend>Backend šalje Access-Control-Allow-Origin</legend>${radios('acao', ACAO)}
         <label class="cc-opt cc-check"><input type="checkbox" name="acac"><span>Access-Control-Allow-Credentials: true</span></label></fieldset>
       <div class="cc-actions">
@@ -76,7 +76,12 @@
     const sentCookie = credentials && state.jar ? state.jar : null;
 
     // 1. Zahtjev
-    let req = line(`${method} ${path} HTTP/1.1`, 'cc-strong') + line('Host: localhost:3000');
+    let req = '';
+    if (client.browser) {
+      const opts = [method === 'POST' ? "method: 'POST'" : '', include ? "credentials: 'include'" : ''].filter(Boolean).join(', ');
+      req += line(`fetch('${API}${path}'${opts ? `, { ${opts} }` : ''})`, 'cc-code') + note('Preglednik od toga sastavlja zahtjev:', 'cc-muted');
+    }
+    req += line(`${method} ${path} HTTP/1.1`, 'cc-strong') + line('Host: localhost:3000');
     if (client.browser && (crossOrigin || method === 'POST')) req += line(`Origin: ${client.origin}`, 'cc-hl');
     if (method === 'POST') req += line('Content-Type: application/x-www-form-urlencoded') + line('') + line('user=ana');
     if (sentCookie) req += line(`Cookie: sid=${sentCookie}`, 'cc-hl');

@@ -809,7 +809,7 @@ Vrijeme: 93–95 min (2 min).
 Framework uklanja ponavljajući HTTP kod; ne odlučuje gdje su pravila ni kako se zaliha ne smije prodati dvaput. Iste dijelove student prepoznaje u Spring Bootu, ASP.NET Coreu ili FastAPI-ju.
 :::
 
-## AI kod na pregledu {#s34 .exercise-slide .code-slide}
+## Što ne valja s ovim AI kodom? {#s34 .exercise-slide .code-slide}
 
 ```javascript
 const EMAIL_API_KEY = "re_8f2a91c4d7…";
@@ -828,7 +828,7 @@ Upit: „napiši servis za narudžbe s e-poštom”. Za ispravan zahtjev radi.
 **Pronađite barem četiri problema. Koja je posljedica i gdje bi taj dio trebao biti?**
 
 ::: {.notes}
-Skripta: [AI kod na pregledu](chapter.hr.qmd#s34).
+Skripta: [Što ne valja s ovim AI kodom?](chapter.hr.qmd#s34).
 Vrijeme: 95–99 min (4 min).
 
 Parovi tri minute, zatim prolaz.
