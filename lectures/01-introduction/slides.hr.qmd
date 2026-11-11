@@ -870,7 +870,7 @@ Izvori: [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html).
 
 ::: {.notes}
 Skripta: [Cookie prenosi kontekst](chapter.hr.qmd#s26).
-Vrijeme: 92–96 min (4 min).
+Vrijeme: 92–95 min (3 min).
 
 Pitanje: Dokazuje li samo prisutnost sid cookieja da je korisnik ovlašten za tuđi zapis?
 
@@ -890,7 +890,7 @@ Izvori: [MDN: Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/H
 
 ::: {.notes}
 Skripta: [Jedna TCP veza, više HTTP zahtjeva](chapter.hr.qmd#s25).
-Vrijeme: 96–98 min (2 min).
+Vrijeme: 95–97 min (2 min).
 
 Demonstracija (provjereno lokalno, macOS `nc -c`): otvorite `nc -c 127.0.0.1 3000`, pošaljite `GET /products HTTP/1.1` + `Host: 127.0.0.1` + prazan red, pa odmah zalijepite drugi zahtjev, npr. `GET /products?case=empty`. Oba odgovora stižu kroz istu vezu. Ručno tipkanje traje dulje od 5 s, pa drugi zahtjev pripremite za lijepljenje. Ako pričekate dulje od 5 s, veza se zatvori i `nc` završi; i to je korisno pokazati.
 
@@ -919,11 +919,9 @@ Podrijetlo čine **način pristupa, ime odredišta i port**.
 
 ::: {.notes}
 Skripta: [CORS: odgovor i pristup iz JavaScripta](chapter.hr.qmd#s27).
-Vrijeme: 98–100 min (2 min).
+Vrijeme: 97–98 min (1 min).
 
-Pitanje: Može li izravan klijent poslati zahtjev iako mu CORS ne dopušta browser pristup?
-
-Očekivano obrazloženje: Da. Backend treba vlastite provjere; CORS nije zaštita od svih klijenata.
+Pitanje o izravnom klijentu (curl) postavite na simulatoru, dva slajda dalje.
 
 
 Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).
@@ -939,9 +937,9 @@ Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US
 
 ::: {.notes}
 Skripta: [CORS na primjeru: zahtjev stiže, čitanje ne](chapter.hr.qmd#s27a).
-Vrijeme: 100–102 min (2 min).
+Vrijeme: 98–99 min (1 min).
 
-Demonstracija (provjereno u headless Chromeu, Node v20.11.0): koristite dva procesa sa slajda „Program, proces i računalo” (`npm start` i `PORT=3001 npm start`). Otvorite `http://127.0.0.1:3001`, u konzoli razvojnih alata upišite `await fetch('http://127.0.0.1:3000/products')`. Konzola javlja: „blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present”, a `fetch` završava s `TypeError: Failed to fetch`. Pokažite terminal procesa na portu 3000: zapisan je `GET /products` sa statusom 200.
+Dijagram samo kratko prođite; isti slijed odmah pokazuje simulator na sljedećem slajdu. Demonstracija sa stvarnim procesima je neobavezna, ako ostane vremena (provjereno u headless Chromeu, Node v20.11.0): koristite dva procesa sa slajda „Program, proces i računalo” (`npm start` i `PORT=3001 npm start`). Otvorite `http://127.0.0.1:3001`, u konzoli razvojnih alata upišite `await fetch('http://127.0.0.1:3000/products')`. Konzola javlja: „blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present”, a `fetch` završava s `TypeError: Failed to fetch`. Pokažite terminal procesa na portu 3000: zapisan je `GET /products` sa statusom 200.
 
 Portovi 3001 i 3000 imaju istu ulogu kao Vite na 5173 i backend na 3000 s prethodnog slajda. `Origin` je zaglavlje koje preglednik sam dodaje: podrijetlo stranice s koje kod šalje zahtjev; JavaScript ga ne može proizvoljno postaviti.
 
@@ -952,6 +950,31 @@ Očekivano obrazloženje: Ne. Vratio je 200; čitanje je blokirao preglednik jer
 Napomena: ovo je jednostavan GET pa nema preflighta. Za druge zahtjeve (npr. JSON tijelo, vlastita zaglavlja) preglednik prvo šalje `OPTIONS` i bez dopuštenja ne šalje stvarni zahtjev.
 
 Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).
+:::
+
+## Simulator: kolačić i CORS {#s27b .sim-slide}
+
+```{=html}
+<div id="cc-sim" class="cc-sim" data-prevent-swipe></div>
+<script src="assets/cors-cookie-sim.js"></script>
+```
+
+::: {.notes}
+Skripta: [Simulator: kolačić i CORS](chapter.hr.qmd#s27b).
+Vrijeme: 99–102 min (3 min).
+
+Simulator je pojednostavljen model ponašanja preglednika: samo jednostavni zahtjevi (bez preflighta); `fetch` sa zadanim `credentials: 'same-origin'` ili s `'include'`. Početno stanje: stranica s :3000, credentials 'same-origin', bez CORS zaglavlja. Prije svakog klika pitajte što će se dogoditi u koracima 1 i 4, pa tek onda kliknite.
+
+1. Stranica s :5173, backend ne šalje Access-Control-Allow-Origin, GET /products. Očekivano: backend vraća 200, naš kod dobiva TypeError. Isto kao demonstracija sa slajda prije.
+2. Isto, ali Access-Control-Allow-Origin: http://127.0.0.1:5173. Očekivano: i dalje TypeError, jer localhost i 127.0.0.1 nisu isto podrijetlo iako su isto računalo. Zatim odaberite http://localhost:5173: čitanje uspijeva.
+3. Stranica s :3000, POST /login, pa GET /cart. Očekivano: preglednik spremi sid=abc123 i sam ga šalje u Cookie zaglavlju; backend preko njega pronalazi košaricu.
+4. Kolačić je spremljen; prebacite na stranicu s :5173 (Access-Control-Allow-Origin: http://localhost:5173) i GET /cart. Očekivano: CORS dopušta čitanje, ali backend vraća 401 jer `fetch` na drugo podrijetlo prema zadanom ne šalje kolačiće. CORS nije prijava.
+5. Isto, ali credentials 'include'. Očekivano: preglednik sada šalje Cookie i backend vraća košaricu, ali naš kod dobiva TypeError dok backend ne pošalje i `Access-Control-Allow-Credentials: true`. Uz `*` ne prolazi ni tada: s kolačićima podrijetlo mora biti navedeno točno. Istaknite: kolačić je poslan i backend je zahtjev obradio i kad čitanje nije dopušteno.
+6. curl, Access-Control-Allow-Origin ne šalje, GET /products. Pitanje: Može li izravan klijent pročitati odgovor iako CORS ne dopušta pristup iz preglednika? Očekivano: da; CORS provodi preglednik, ne backend. Backend treba vlastite provjere.
+
+Napomena: kolačić je vezan uz ime domaćina, ne uz port, pa bi ga preglednik slao i stranici na :5173. `credentials` određuje šalje li `fetch` kolačiće i prihvaća li Set-Cookie: 'omit' nikad, 'same-origin' (zadano) samo za isto podrijetlo, 'include' uvijek. Atribut SameSite i zaštitu od CSRF-a obrađujemo u predavanju o sigurnosti; :5173 i :3000 na localhostu su isto mjesto (*same-site*), pa SameSite ovdje ne blokira slanje.
+
+Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS); [MDN: Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies); [MDN: RequestInit credentials](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit#credentials).
 :::
 
 ## Gdje odlazi vrijeme? {#s28 .process-slide}

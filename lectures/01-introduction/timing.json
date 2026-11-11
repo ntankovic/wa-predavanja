@@ -269,95 +269,102 @@
     "slide": 39,
     "title": "Cookie prenosi kontekst",
     "start": 92,
-    "end": 96,
-    "minutes": 4
+    "end": 95,
+    "minutes": 3
   },
   {
     "slide": 40,
     "title": "Jedna TCP veza, više HTTP zahtjeva",
-    "start": 96,
-    "end": 98,
+    "start": 95,
+    "end": 97,
     "minutes": 2
   },
   {
     "slide": 41,
     "title": "CORS: odgovor i pristup iz JavaScripta",
-    "start": 98,
-    "end": 100,
-    "minutes": 2
+    "start": 97,
+    "end": 98,
+    "minutes": 1
   },
   {
     "slide": 42,
     "title": "CORS na primjeru: zahtjev stiže, čitanje ne",
-    "start": 100,
-    "end": 102,
-    "minutes": 2
+    "start": 98,
+    "end": 99,
+    "minutes": 1
   },
   {
     "slide": 43,
+    "title": "Simulator: kolačić i CORS",
+    "start": 99,
+    "end": 102,
+    "minutes": 3
+  },
+  {
+    "slide": 44,
     "title": "Gdje odlazi vrijeme?",
     "start": 102,
     "end": 104,
     "minutes": 2
   },
   {
-    "slide": 44,
+    "slide": 45,
     "title": "Bez odgovora: što se doista dogodilo?",
     "start": 104,
     "end": 107,
     "minutes": 3
   },
   {
-    "slide": 45,
+    "slide": 46,
     "title": "Vježba: locirajte sljedeću provjeru",
     "start": 107,
     "end": 111,
     "minutes": 4
   },
   {
-    "slide": 46,
+    "slide": 47,
     "title": "Provjera: tri česte zablude",
     "start": 111,
     "end": 113,
     "minutes": 2
   },
   {
-    "slide": 47,
+    "slide": 48,
     "title": "Sažetak jednog zahtjeva",
     "start": 113,
     "end": 115,
     "minutes": 2
   },
   {
-    "slide": 48,
+    "slide": 49,
     "title": "Osmislite sljedeći korak",
     "start": 115,
     "end": 118,
     "minutes": 3
   },
   {
-    "slide": 49,
+    "slide": 50,
     "title": "Pregled: 10 zaglavlja zahtjeva",
     "start": 118,
     "end": 118.5,
     "minutes": 0.5
   },
   {
-    "slide": 50,
+    "slide": 51,
     "title": "Pregled: 10 zaglavlja odgovora",
     "start": 118.5,
     "end": 119.0,
     "minutes": 0.5
   },
   {
-    "slide": 51,
+    "slide": 52,
     "title": "Literatura: HTTP i preglednik",
     "start": 119.0,
     "end": 119.5,
     "minutes": 0.5
   },
   {
-    "slide": 52,
+    "slide": 53,
     "title": "Literatura: put kroz sustav",
     "start": 119.5,
     "end": 120.0,

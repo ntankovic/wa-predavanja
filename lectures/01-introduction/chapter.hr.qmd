@@ -355,7 +355,7 @@ Naš primjer vraća jednostavan niz s poljima id, name i price, dok DummyJSON vr
 
 Početni model ima preglednik, vlastiti backend i bazu. API (Application Programming Interface) ovdje znači sučelje kojim se drugi programi obraćaju backendu: koje zahtjeve prihvaća i kakve odgovore vraća. Dogovor o putanjama, metodama i obliku podataka zvat ćemo API ugovor. Strelice pokazuju tko koga poziva, ne vrijeme. Posrednika dodajemo tek nakon osnovnog puta.
 
-Broj okvira nije broj fizičkih računala. Preglednik, Node.js i baza mogu se izvršavati na istom prijenosniku ili na različitim računalima. Baza je iz perspektive backenda udaljena ovisnost kada joj pristupa preko mreže. U ovom modelu frontend ne otvara izravnu vezu prema bazi: API je mjesto preko kojeg dobiva dopuštenu reprezentaciju podataka.
+Broj okvira nije broj fizičkih računala. Preglednik, Node.js i baza mogu se izvršavati na istom prijenosniku ili na različitim računalima. Baza je iz perspektive backenda udaljena zavisnost kada joj pristupa preko mreže. U ovom modelu frontend ne otvara izravnu vezu prema bazi: API je mjesto preko kojeg dobiva dopuštenu reprezentaciju podataka.
 
 ![Početni model: preglednik šalje zahtjev backendu, a backend pristupa bazi.](assets/architecture.hr.pdf){width=95%}
 
@@ -665,7 +665,7 @@ Izvor: [OWASP: Input Validation](https://cheatsheetseries.owasp.org/cheatsheets/
 
 > **Vrijeme za nastavu:** 74–77 min (3 min).
 
-Sada početnom modelu dodajemo posrednički program između preglednika i backenda. To nije obvezan dio lokalne demonstracije. Primjer 504 znači da posrednik nije na vrijeme dobio odgovor od sljedećeg poslužitelja; 502 označava nevaljan odgovor koji je od njega dobio. Kada kažemo ovisnost, mislimo na komponentu čiji rezultat druga komponenta treba, poput baze koju backend poziva.
+Sada početnom modelu dodajemo posrednički program između preglednika i backenda. To nije obvezan dio lokalne demonstracije. Primjer 504 znači da posrednik nije na vrijeme dobio odgovor od sljedećeg poslužitelja; 502 označava nevaljan odgovor koji je od njega dobio. Kada kažemo zavisnost, mislimo na komponentu čiji rezultat druga komponenta treba, poput baze koju backend poziva.
 
 Reverse proxy stoji ispred poslužitelja aplikacije iz perspektive klijenta. U našem modelu prihvaća javni zahtjev i otvara ili ponovno koristi zasebnu vezu prema backendu. To uvodi još jednu granicu kašnjenja i mogućeg neuspjeha, ali omogućuje zajednički ulaz za više procesa (instanci) istog backenda.
 
@@ -699,7 +699,7 @@ Sada možemo spojiti proxy s dva procesa iz ranije demonstracije. Preglednik zna
 
 > **Vrijeme za nastavu:** 78–80 min (2 min).
 
-Sada kartu ovisnosti pretvaramo u vremenski slijed. Početni događaj je korisnički klik ili učitavanje prikaza. Kod određuje URL i pokreće poziv. Preglednik ima lokalnu oznaku čekanja; backend u ovom trenutku možda još nije vidio nijedan bajt. Puna strelica označava poziv, a vrijeme na slici teče prema dolje.
+Sada kartu zavisnosti pretvaramo u vremenski slijed. Početni događaj je korisnički klik ili učitavanje prikaza. Kod određuje URL i pokreće poziv. Preglednik ima lokalnu oznaku čekanja; backend u ovom trenutku možda još nije vidio nijedan bajt. Puna strelica označava poziv, a vrijeme na slici teče prema dolje.
 
 Slijed prikazuje produkcijski model s proxyjem i bazom. Naš lokalni backend nema proxy, a podatke drži u memoriji; uloge ostaju iste. Radi preglednosti pretpostavljamo da je potrebna komunikacijska veza uspostavljena i da odgovor ne dolazi iz predmemorije (*cache*), odnosno spremljene kopije ranijeg odgovora. Te pretpostavke izgovaramo jer stvarni Network zapis može izgledati drugačije. Učitavanje sučelja nije „dokaz da server radi”; to je lokalna informacija da je naša funkcija započela posao.
 
@@ -815,7 +815,7 @@ Izvori: [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html).
 
 ## Cookie prenosi kontekst {#s26}
 
-> **Vrijeme za nastavu:** 92–96 min (4 min).
+> **Vrijeme za nastavu:** 92–95 min (3 min).
 
 Dosad smo dohvaćali javne proizvode. Zamislimo sada prijavljenog korisnika: kako aplikacija povezuje više njegovih zahtjeva? Korisnička sesija je spremljeni kontekst, primjerice kojoj prijavi pripadaju zahtjevi. Jedan način povezivanja je identifikator sesije spremljen u cookieju. Cookie je mala vrijednost koju preglednik pamti i šalje uz odgovarajuće zahtjeve; ne mora služiti prijavi.
 
@@ -845,7 +845,7 @@ Izvori: [MDN: Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/H
 
 ## Jedna TCP veza, više HTTP zahtjeva {#s25}
 
-> **Vrijeme za nastavu:** 96–98 min (2 min).
+> **Vrijeme za nastavu:** 95–97 min (2 min).
 
 Kad smo `nc` naredbom poslali zahtjev, otvorili smo TCP vezu. Nakon odgovora ta veza nije nužno zatvorena. U HTTP/1.1 veza prema zadanom ostaje otvorena (*persistent connection*, često zvana *keep-alive*), pa isti klijent kroz nju može poslati sljedeći zahtjev. Time se izbjegava trošak ponovne uspostave veze, ali se ne mijenja značenje zahtjeva: svaki je i dalje zasebna, potpuna poruka.
 
@@ -872,7 +872,7 @@ Izvori: [MDN: Connection management in HTTP/1.x](https://developer.mozilla.org/e
 
 ## CORS: odgovor i pristup iz JavaScripta {#s27}
 
-> **Vrijeme za nastavu:** 98–100 min (2 min).
+> **Vrijeme za nastavu:** 97–98 min (1 min).
 
 Vratimo se dohvatu proizvoda: što ako frontend i backend posluživaju različite adrese? Podrijetlo (origin) određuju način pristupa, ime domaćina i port. CORS (Cross-Origin Resource Sharing) je mehanizam kojim poslužitelj kroz zaglavlja dopušta pregledniku određeni pristup preko granice podrijetla.
 
@@ -896,7 +896,7 @@ Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US
 
 ## CORS na primjeru: zahtjev stiže, čitanje ne {#s27a}
 
-> **Vrijeme za nastavu:** 100–102 min (2 min).
+> **Vrijeme za nastavu:** 98–99 min (1 min).
 
 Pogledajmo CORS na vlastitom poslužitelju. Pokrenemo dva procesa istog programa: jedan na portu 3000, drugi na portu 3001. Otvorimo stranicu `http://127.0.0.1:3001` i iz njezina JavaScripta pozovemo `fetch('http://127.0.0.1:3000/products')`. Podrijetla se razlikuju u portu, kao frontend na 5173 i backend na 3000.
 
@@ -921,6 +921,31 @@ Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US
 > **Za nastavnika:** Je li backend vratio grešku?
 >
 > **Očekivano obrazloženje:** Ne. Vratio je 200; čitanje je blokirao preglednik jer odgovor ne dopušta podrijetlo :3001.
+
+## Simulator: kolačić i CORS {#s27b}
+
+> **Vrijeme za nastavu:** 99–102 min (3 min).
+
+Kolačić i CORS najlakše je razlikovati kad ih promatramo na istim zahtjevima. U HTML prezentaciji ovog predavanja nalazi se simulator: odaberemo tko šalje zahtjev prema `http://localhost:3000` (stranica s istog podrijetla, stranica s `http://localhost:5173` ili `curl`), što backend šalje u `Access-Control-Allow-Origin` te jedan od zahtjeva `GET /products`, `POST /login` i `GET /cart`. Simulator prikazuje četiri koraka: zahtjev koji preglednik šalje, obradu na backendu, odgovor i ono što dobiva naš JavaScript.
+
+Simulator je pojednostavljen model. Pokriva samo jednostavne zahtjeve, bez preflighta. Opcija `credentials` u pozivu `fetch` određuje šalje li preglednik kolačiće i prihvaća li `Set-Cookie`: `'same-origin'` (zadano) samo za isto podrijetlo, `'include'` i za drugo podrijetlo, `'omit'` nikad.
+
+Šest pokusa vrijedi predvidjeti prije klika:
+
+1. **Drugo podrijetlo, bez dopuštenja.** Backend vraća 200, a naš kod dobiva `TypeError: Failed to fetch`. Zahtjev je stigao; preglednik nije predao odgovor.
+2. **Pogrešno dopušteno podrijetlo.** `Access-Control-Allow-Origin: http://127.0.0.1:5173` ne dopušta stranicu s `http://localhost:5173`: ime domaćina je drugačije, iako oba imena vode na isto računalo. Podrijetlo se mora točno podudarati.
+3. **Prijava na istom podrijetlu.** Odgovor na `POST /login` sadrži `Set-Cookie: sid=abc123`; preglednik ga spremi i sam doda `Cookie: sid=abc123` u sljedeći `GET /cart`. Backend preko te vrijednosti pronalazi sesiju.
+4. **Dopušten CORS, ali bez kolačića.** Sa stranice na `http://localhost:5173` i uz ispravno dopuštenje naš kod čita odgovor, ali to je `401`: `fetch` na drugo podrijetlo prema zadanom ne šalje kolačiće, pa backend ne zna čija je košarica. CORS ne prijavljuje korisnika.
+5. **Kolačići na drugo podrijetlo.** Uz `credentials: 'include'` preglednik šalje `Cookie: sid=abc123` i backend vraća košaricu. Naš kod je ipak čita tek ako odgovor sadrži točno podrijetlo u `Access-Control-Allow-Origin` (ne `*`) i `Access-Control-Allow-Credentials: true`. Kolačić je poslan i zahtjev obrađen i kad čitanje nije dopušteno.
+6. **Izravni klijent.** `curl` čita odgovor bez obzira na CORS zaglavlja, jer CORS provodi preglednik. Backend zato ne smije računati na CORS kao zaštitu podataka.
+
+Kolačić je vezan uz ime domaćina, a ne uz port. Atribut `SameSite` i zaštitu od lažiranih zahtjeva (CSRF) obrađujemo u predavanju o sigurnosti.
+
+Izvori: [MDN: Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS); [MDN: Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies); [MDN: RequestInit credentials](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit#credentials).
+
+> **Za nastavnika:** Prije svakog klika pitajte što će se dogoditi u koracima 1 i 4. Kod pokusa 6 pitajte: može li izravni klijent pročitati odgovor iako CORS ne dopušta pristup iz preglednika?
+>
+> **Očekivano obrazloženje:** Da. CORS provodi preglednik; backend treba vlastite provjere.
 
 ## Gdje odlazi vrijeme? {#s28}
 
