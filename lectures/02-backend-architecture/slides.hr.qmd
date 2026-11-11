@@ -52,7 +52,7 @@ Nakon predavanja moći ćete:
 
 1. **objasniti** zašto zajedničko stanje ne smije biti u memoriji procesa [Razumijevanje]{.bloom .b2}
 2. **konfigurirati** backend iz okruženja i uredno ga ugasiti [Primjena]{.bloom .b3}
-3. **testirati** pravila servisa s lažnim ovisnostima, bez HTTP-a [Primjena]{.bloom .b3}
+3. **testirati** pravila servisa s lažnim zavisnostima, bez HTTP-a [Primjena]{.bloom .b3}
 4. **razložiti** `POST /orders` na usmjeravanje, HTTP sloj, pravila, podatke i vanjske usluge [Analiza]{.bloom .b4}
 5. **obrazložiti** u koji dio koda pripada novo pravilo [Vrednovanje]{.bloom .b5}
 
@@ -449,35 +449,35 @@ Pitanje: Zašto servis ne baca odmah { status: 409 }?
 Očekivano obrazloženje: tada bi ovisio o HTTP-u; skripta za uvoz ne bi znala što sa statusom.
 :::
 
-## Smjer ovisnosti {#s18 .process-slide}
+## Smjer zavisnosti {#s18 .process-slide}
 
-![](assets/dependency-direction.hr.svg){height=340 fig-alt="HTTP sloj poziva servis, servis poziva ovisnosti. server.mjs stvara sve tri i predaje ih."}
+![](assets/dependency-direction.hr.svg){height=340 fig-alt="HTTP sloj poziva servis, servis poziva zavisnosti. server.mjs stvara sve tri i predaje ih."}
 
 ::: {.definition number="2.2"}
-**Smjer ovisnosti:** poslovna pravila ne ovise o detaljima poput HTTP-a, baze ili e-pošte. Detalji ovise o pravilima ili im se predaju izvana.
+**Smjer zavisnosti:** poslovna pravila ne ovise o detaljima poput HTTP-a, baze ili e-pošte. Detalji ovise o pravilima ili im se predaju izvana.
 :::
 
 ::: {.notes}
-Skripta: [Smjer ovisnosti](chapter.hr.qmd#s18).
+Skripta: [Smjer zavisnosti](chapter.hr.qmd#s18).
 Vrijeme: 52–55 min (3 min).
 
 Ovisiti = uvoziti ili pozivati; promjena u drugom modulu može nas pokvariti. U literaturi: dependency inversion, ports and adapters, heksagonalna arhitektura; danas su važne strelice, ne imena.
 
 Pitanje: Gdje je u order-service.mjs riječ import?
 
-Očekivano obrazloženje: nigdje. Servis ne uvozi nijedan modul; greške definira sam, ovisnosti dobiva kao parametre. Pokažite datoteku.
+Očekivano obrazloženje: nigdje. Servis ne uvozi nijedan modul; greške definira sam, zavisnosti dobiva kao parametre. Pokažite datoteku.
 
 Izvori: [Fowler, Dependency Injection (2004)](https://martinfowler.com/articles/injection.html).
 :::
 
-## Ubrizgavanje ovisnosti {#s19 .code-slide}
+## Umetanje zavisnosti {#s19 .code-slide}
 
 ```javascript
-// Bez ubrizgavanja: servis sam bira implementacije
+// Bez umetanja: servis sam bira implementacije
 import { products } from "./products-array.mjs";
 import { sendEmail } from "./smtp.mjs";
 
-// S ubrizgavanjem: servis dobiva ovisnosti (order-service.mjs)
+// S umetanjem: servis dobiva zavisnosti (order-service.mjs)
 export function createOrderService({ catalog, orders, notifier }) { /* … */ }
 
 // server.mjs: jedino mjesto koje bira konkretne implementacije
@@ -489,10 +489,10 @@ const orderService = createOrderService({
 });
 ```
 
-**Ubrizgavanje ovisnosti:** dio koda ne stvara ono o čemu ovisi, nego to dobiva izvana. Za to ne treba biblioteka.
+**Umetanje zavisnosti** (engl. *dependency injection*): dio koda ne stvara ono o čemu ovisi, nego to dobiva izvana. Za to ne treba biblioteka.
 
 ::: {.notes}
-Skripta: [Ubrizgavanje ovisnosti](chapter.hr.qmd#s19).
+Skripta: [Umetanje zavisnosti](chapter.hr.qmd#s19).
 Vrijeme: 55–58 min (3 min).
 
 Mjesto koje sastavlja aplikaciju: composition root (server.mjs). Isti katalog dobivaju servis narudžbi i handler proizvoda. Spring i ASP.NET Core imaju spremnike koji to rade automatski.
@@ -640,7 +640,7 @@ Očekivano obrazloženje: ovisi o kodu; vjerojatno bi e-pošta tiho radila u zad
 
 ## Životni ciklus procesa {#s26 .process-slide}
 
-![](assets/lifecycle.hr.svg){height=540 fig-alt="Pokretanje: konfiguracija, sastavljanje ovisnosti, listen, rad. Gašenje na SIGINT ili SIGTERM: server.close, dovršavanje započetih zahtjeva, exit 0. Izlazi s greškom: neispravna konfiguracija, zauzet port, gašenje dulje od 10 s."}
+![](assets/lifecycle.hr.svg){height=540 fig-alt="Pokretanje: konfiguracija, sastavljanje zavisnosti, listen, rad. Gašenje na SIGINT ili SIGTERM: server.close, dovršavanje započetih zahtjeva, exit 0. Izlazi s greškom: neispravna konfiguracija, zauzet port, gašenje dulje od 10 s."}
 
 ::: {.notes}
 Skripta: [Životni ciklus procesa](chapter.hr.qmd#s26).
@@ -840,7 +840,7 @@ Očekivano obrazloženje: (1) tajna u kodu → konfiguracija iz okruženja; (2) 
 
 - Jedan handler miješa **sedam poslova** sa sedam razloga za promjenu.
 - Usmjeravanje → HTTP sloj → servis → repozitorij i vanjske usluge.
-- Pravila ne ovise o detaljima; ovisnosti im predaje `server.mjs`.
+- Pravila ne ovise o detaljima; zavisnosti im predaje `server.mjs`.
 - Sloj dodajemo kad izdvaja stvaran razlog za promjenu.
 - Konfiguracija iz okruženja, provjerena pri pokretanju; tajne izvan koda.
 - Uredno gašenje; zajedničko stanje **nije** u memoriji procesa.

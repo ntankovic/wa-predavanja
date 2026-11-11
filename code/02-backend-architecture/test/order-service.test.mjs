@@ -1,5 +1,5 @@
 // Test poslovnih pravila bez HTTP poslužitelja, mreže i e-pošte:
-// servis dobiva lažne (fake) ovisnosti koje sami složimo.
+// servis dobiva lažne (fake) zavisnosti koje sami složimo.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createOrderService, OutOfStockError, ValidationError } from "../src/orders/order-service.mjs";

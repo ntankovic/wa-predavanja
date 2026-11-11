@@ -1,5 +1,5 @@
 // Poslovna pravila naručivanja. Ne zna ništa o HTTP-u (nema req, res ni statusa)
-// ni o tome gdje su podaci: ovisnosti dobiva kao parametre.
+// ni o tome gdje su podaci: zavisnosti dobiva kao parametre.
 export class ValidationError extends Error {}
 export class OutOfStockError extends Error {}
 

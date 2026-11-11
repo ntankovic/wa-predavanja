@@ -32,7 +32,7 @@ Konfiguracija (varijable okruženja; primjer u `.env.example`):
 ## Struktura
 
 ```text
-server.mjs                     pokretanje: konfiguracija → sastavljanje ovisnosti → listen; gašenje
+server.mjs                     pokretanje: konfiguracija → sastavljanje zavisnosti → listen; gašenje
 src/config.mjs                 čitanje i provjera konfiguracije
 src/app.mjs                    usmjeravanje (metoda + putanja → handler), 404/405/500
 src/http.mjs                   čitanje JSON tijela, slanje JSON odgovora
@@ -42,7 +42,7 @@ src/orders/order-service.mjs   poslovna pravila naručivanja
 src/orders/memory-orders.mjs   pohrana narudžbi u memoriji
 src/notifications/notifier.mjs simulirana e-pošta
 naive/server-naive.mjs         sve u jednom handleru (za usporedbu)
-test/order-service.test.mjs    testovi pravila s lažnim ovisnostima
+test/order-service.test.mjs    testovi pravila s lažnim zavisnostima
 ```
 
 ## POST /orders

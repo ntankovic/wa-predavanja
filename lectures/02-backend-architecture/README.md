@@ -23,7 +23,7 @@
 
 - Razumijevanje: objasniti zašto zajedničko stanje ne smije biti u memoriji procesa
 - Primjena: konfigurirati backend iz okruženja i uredno ga ugasiti
-- Primjena: testirati pravila servisa s lažnim ovisnostima, bez HTTP-a
+- Primjena: testirati pravila servisa s lažnim zavisnostima, bez HTTP-a
 - Analiza: razložiti `POST /orders` na usmjeravanje, HTTP sloj, pravila, podatke i vanjske usluge
 - Vrednovanje: obrazložiti u koji dio koda pripada novo pravilo
 

@@ -10,7 +10,7 @@ Pristup: 2026-10-27. **Mreža je u ovoj sesiji bila blokirana: nijedan vanjski i
 | Dijkstra, *On the role of scientific thought*, EWD447 (1974) | https://www.cs.utexas.edu/~EWD/transcriptions/EWD04xx/EWD447.html | podrijetlo izraza *separation of concerns* | neprovjereno |
 | Fowler, *PresentationDomainDataLayering* (2015) | https://martinfowler.com/bliki/PresentationDomainDataLayering.html | podjela na prikaz/domenu/podatke | neprovjereno |
 | Fowler, *Repository* (PoEAA) | https://martinfowler.com/eaaCatalog/repository.html | pojam repozitorija | neprovjereno |
-| Fowler, *Inversion of Control Containers and the Dependency Injection pattern* (2004) | https://martinfowler.com/articles/injection.html | ubrizgavanje ovisnosti | neprovjereno |
+| Fowler, *Inversion of Control Containers and the Dependency Injection pattern* (2004) | https://martinfowler.com/articles/injection.html | umetanje zavisnosti | neprovjereno |
 | Fowler, *MonolithFirst* (2015) | https://martinfowler.com/bliki/MonolithFirst.html | monolit kao polazište | neprovjereno |
 | The Twelve-Factor App: III Config, VI Processes, IX Disposability | https://12factor.net/config · /processes · /disposability | konfiguracija iz okruženja, procesi bez stanja, brzo pokretanje i uredno gašenje | neprovjereno |
 | OWASP Secrets Management Cheat Sheet | https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html | rukovanje tajnama, rotacija | neprovjereno |

@@ -15,6 +15,8 @@ Consult before writing or translating. Croatian is the authoring language; Engli
 | Croatian term | Preferred English | Meaning / context | Avoid | Status | Decision date / source |
 | --- | --- | --- | --- | --- | --- |
 
+| umetanje zavisnosti | dependency injection | Dio koda ne stvara ono o čemu ovisi, nego to dobiva izvana (Predavanje 02); u tekstu prvi put „umetanje zavisnosti (engl. *dependency injection*)” | ubrizgavanje ovisnosti | approved | Lecturer, 2026-11-11 |
+| zavisnost | dependency | Komponenta ili modul čiji rezultat drugi dio koda treba (npr. „smjer zavisnosti”, „lažne zavisnosti”); glagol „ovisi o” ostaje | ovisnost | provisional (izvedeno iz odluke o DI) | 2026-11-11 |
 | praćenje i dijagnostika rada aplikacije | observability | Razumijevanje ponašanja aplikacije pomoću logova, metrika i tragova zahtjeva (traces) | opažljivost (predavaču nije razumljivo) | approved | Lecturer, 2026-10-06 |
 
 ## Approved course identity

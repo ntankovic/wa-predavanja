@@ -35,7 +35,7 @@ Nakon predavanja moći ćete (u zagradi je razina revidirane Bloomove taksonomij
 
 - **objasniti** zašto zajedničko stanje ne smije biti u memoriji procesa *(razumijevanje)*
 - **konfigurirati** backend iz okruženja i uredno ga ugasiti *(primjena)*
-- **testirati** pravila servisa s lažnim ovisnostima, bez HTTP-a *(primjena)*
+- **testirati** pravila servisa s lažnim zavisnostima, bez HTTP-a *(primjena)*
 - **razložiti** `POST /orders` na usmjeravanje, HTTP sloj, pravila, podatke i vanjske usluge *(analiza)*
 - **obrazložiti** u koji dio koda pripada novo pravilo *(vrednovanje)*
 
@@ -370,36 +370,36 @@ Svi statusi u tablici provjereni su `curl` zahtjevima prema pokrenutom backendu.
 
 > **Za nastavnika:** Pitajte: zašto servis ne baca odmah objekt `{ status: 409 }`? Očekivano: tada bi servis ovisio o HTTP-u; skripta za uvoz ne bi imala što raditi sa statusom.
 
-## Smjer ovisnosti {#s18}
+## Smjer zavisnosti {#s18}
 
 > **Vrijeme za nastavu:** 52–55 min (3 min).
 
-Kod iz jednog modula koji uvozi ili poziva drugi modul **ovisi** o njemu: promjena u drugom modulu može ga pokvariti. Bitno je u kojem smjeru idu te ovisnosti. HTTP sloj ovisi o servisu, jer ga poziva. Servis bi trebao ovisiti samo o funkcijama koje mu trebaju (`findById`, `save`, `orderPlaced`), a ne o konkretnoj datoteci s nizom, o `node:http` ili o određenom pružatelju e-pošte.
+Kod iz jednog modula koji uvozi ili poziva drugi modul **ovisi** o njemu: promjena u drugom modulu može ga pokvariti. Bitno je u kojem smjeru idu te zavisnosti. HTTP sloj ovisi o servisu, jer ga poziva. Servis bi trebao ovisiti samo o funkcijama koje mu trebaju (`findById`, `save`, `orderPlaced`), a ne o konkretnoj datoteci s nizom, o `node:http` ili o određenom pružatelju e-pošte.
 
-![Smjer ovisnosti: HTTP sloj poziva servis, servis poziva ovisnosti koje je dobio. Samo `server.mjs` stvara konkretne implementacije i predaje ih.](assets/dependency-direction.hr.pdf){width=95%}
+![Smjer zavisnosti: HTTP sloj poziva servis, servis poziva zavisnosti koje je dobio. Samo `server.mjs` stvara konkretne implementacije i predaje ih.](assets/dependency-direction.hr.pdf){width=95%}
 
 ::: {.definition number="2.2"}
-**Smjer ovisnosti:** poslovna pravila ne ovise o detaljima poput HTTP-a, baze ili e-pošte. Detalji ovise o pravilima ili im se predaju izvana.
+**Smjer zavisnosti:** poslovna pravila ne ovise o detaljima poput HTTP-a, baze ili e-pošte. Detalji ovise o pravilima ili im se predaju izvana.
 :::
 
 Posljedica: kad promijenimo detalj (bazu, framework, pružatelja e-pošte), servis se ne mijenja. Kad promijenimo pravilo, ne diramo HTTP ni bazu. Ovo je jezgra ideja koje se u literaturi zovu *dependency inversion*, heksagonalna arhitektura ili *ports and adapters*; danas ne trebamo ta imena, nego smjer strelica.
 
 Izvori: [Fowler, *Inversion of Control Containers and the Dependency Injection pattern* (2004)](https://martinfowler.com/articles/injection.html).
 
-> **Za nastavnika:** Pitajte: gdje je u `order-service.mjs` riječ `import`? Očekivano: nigdje. `order-service.mjs` ne uvozi nijedan modul; greške definira sam, a ovisnosti dobiva kao parametre. Pokažite to u datoteci.
+> **Za nastavnika:** Pitajte: gdje je u `order-service.mjs` riječ `import`? Očekivano: nigdje. `order-service.mjs` ne uvozi nijedan modul; greške definira sam, a zavisnosti dobiva kao parametre. Pokažite to u datoteci.
 
-## Ubrizgavanje ovisnosti {#s19}
+## Umetanje zavisnosti {#s19}
 
 > **Vrijeme za nastavu:** 55–58 min (3 min).
 
-Kako servis dobiva katalog ako ga ne uvozi? Dobiva ga kao parametar pri stvaranju. To se zove **ubrizgavanje ovisnosti** (*dependency injection*): umjesto da dio koda sam bira i stvara ono o čemu ovisi, netko izvana mu to preda. Za to ne treba nikakva biblioteka; dovoljna je funkcija s parametrima.
+Kako servis dobiva katalog ako ga ne uvozi? Dobiva ga kao parametar pri stvaranju. To se zove **umetanje zavisnosti** (engl. *dependency injection*): umjesto da dio koda sam bira i stvara ono o čemu ovisi, netko izvana mu to preda. Za to ne treba nikakva biblioteka; dovoljna je funkcija s parametrima.
 
 ```javascript
-// Bez ubrizgavanja: servis sam bira implementacije
+// Bez umetanja: servis sam bira implementacije
 import { products } from "./products-array.mjs";
 import { sendEmail } from "./smtp.mjs";
 
-// S ubrizgavanjem: servis dobiva ovisnosti (order-service.mjs)
+// S umetanjem: servis dobiva zavisnosti (order-service.mjs)
 export function createOrderService({ catalog, orders, notifier }) { /* … */ }
 
 // server.mjs: jedino mjesto koje bira konkretne implementacije
@@ -421,7 +421,7 @@ Izvori: [Fowler, *Inversion of Control Containers and the Dependency Injection p
 
 > **Vrijeme za nastavu:** 58–61 min (3 min).
 
-Prva konkretna korist: pravila možemo provjeriti bez pokretanja poslužitelja, bez mreže i bez e-pošte. Test sam složi servis s ovisnostima koje mu odgovaraju, uključujući lažnu obavijest (*fake*) koja samo bilježi poziv.
+Prva konkretna korist: pravila možemo provjeriti bez pokretanja poslužitelja, bez mreže i bez e-pošte. Test sam složi servis s zavisnostima koje mu odgovaraju, uključujući lažnu obavijest (*fake*) koja samo bilježi poziv.
 
 ```javascript
 // test/order-service.test.mjs (skraćeno)
@@ -545,7 +545,7 @@ Isto vrijedi za zauzeti port. Drugi proces na istom portu sada ispisuje `Pokreta
 
 > **Vrijeme za nastavu:** 73–76 min (3 min).
 
-U prvom predavanju proces je bio „jedno pokretanje programa”. Sada pogledajmo njegove faze. `server.mjs` ih izvodi redom: učita i provjeri konfiguraciju, sastavi ovisnosti, i tek tada pozove `listen`. Do tog trenutka proces ne prima zahtjeve, pa nijedan zahtjev ne može stići u napola sastavljenu aplikaciju.
+U prvom predavanju proces je bio „jedno pokretanje programa”. Sada pogledajmo njegove faze. `server.mjs` ih izvodi redom: učita i provjeri konfiguraciju, sastavi zavisnosti, i tek tada pozove `listen`. Do tog trenutka proces ne prima zahtjeve, pa nijedan zahtjev ne može stići u napola sastavljenu aplikaciju.
 
 ![Životni ciklus procesa: pokretanje (konfiguracija, sastavljanje, `listen`), rad i uredno gašenje. Crvene strelice su izlazi s greškom.](assets/lifecycle.hr.pdf){width=100%}
 
@@ -735,7 +735,7 @@ Pronađite barem četiri problema. Za svaki recite koju posljedicu ima i gdje bi
 
 - Jedan handler za `POST /orders` miješa sedam poslova sa sedam razloga za promjenu.
 - Usmjeravanje bira handler; HTTP sloj prevodi zahtjev i odgovor; servis drži pravila; repozitorij i obavijest skrivaju podatke i vanjske usluge.
-- Pravila ne ovise o detaljima; ovisnosti im predaje `server.mjs`. Zato ih testiramo bez HTTP-a i mijenjamo bazu bez promjene servisa.
+- Pravila ne ovise o detaljima; zavisnosti im predaje `server.mjs`. Zato ih testiramo bez HTTP-a i mijenjamo bazu bez promjene servisa.
 - Sloj dodajemo kad izdvaja stvaran razlog za promjenu, ne po navici.
 - Konfiguracija dolazi iz okruženja i provjerava se pri pokretanju; tajne nisu u kodu, gitu ni zapisima.
 - Proces se pokreće redom i gasi uredno; zajedničko stanje ne smije živjeti u memoriji jednog procesa.

@@ -1,5 +1,5 @@
 // Pokretanje i gašenje procesa. Ovo je jedino mjesto koje zna sve dijelove
-// i spaja ih (composition root): konfiguracija → ovisnosti → HTTP poslužitelj.
+// i spaja ih (composition root): konfiguracija → zavisnosti → HTTP poslužitelj.
 import { createServer } from "node:http";
 import { loadConfig, describeConfig } from "./src/config.mjs";
 import { createApp } from "./src/app.mjs";
@@ -19,7 +19,7 @@ try {
   process.exit(1);
 }
 
-// 2. Sastavljanje ovisnosti: tko što dobiva.
+// 2. Sastavljanje zavisnosti: tko što dobiva.
 const catalog = createMemoryCatalog();
 const orderService = createOrderService({
   catalog,

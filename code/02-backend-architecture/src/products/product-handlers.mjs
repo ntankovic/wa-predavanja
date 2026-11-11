@@ -10,7 +10,7 @@ export function createProductHandlers({ catalog }) {
         return sendJson(res, 400, { error: "Nepoznat demonstracijski slučaj" });
       }
       if (scenario === "slow") await new Promise((r) => setTimeout(r, 2000));
-      if (scenario === "error") return sendJson(res, 503, { error: "Simulirana nedostupnost ovisnosti" });
+      if (scenario === "error") return sendJson(res, 503, { error: "Simulirana nedostupnost zavisnosti" });
       if (scenario === "html") {
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
         return res.end("<p>Namjerno neočekivan format umjesto JSON-a.</p>");

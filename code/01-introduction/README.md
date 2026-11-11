@@ -27,7 +27,7 @@ Zaustavljanje: Ctrl+C.
 | `GET /products` | `200`, JSON niz proizvoda |
 | `GET /products?case=empty` | `200`, prazan niz |
 | `GET /products?case=slow` | `200` nakon 2 sekunde |
-| `GET /products?case=error` | `503`, simulirana nedostupnost ovisnosti |
+| `GET /products?case=error` | `503`, simulirana nedostupnost zavisnosti |
 | `GET /products?case=html` | `200`, namjerno HTML umjesto JSON-a |
 | druga putanja | `404` |
 | druga metoda | `405` |

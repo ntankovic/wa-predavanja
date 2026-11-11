@@ -15,7 +15,7 @@
 
 ## Predloženi ishodi (terminologija i formulacije čekaju pregled)
 
-- Odabrati granicu testa i stvarne ovisnosti.
+- Odabrati granicu testa i stvarne zavisnosti.
 - Testirati vlasništvo, pogreške, konkurentnost i ugovor API-ja.
 - Povezati logove, metrike i trag jednog zahtjeva.
 - Odrediti dokaze potrebne za naknadnu dijagnozu ispada.

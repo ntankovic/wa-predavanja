@@ -79,7 +79,7 @@ body += text(520, 595, 'Pune strelice: pozivi funkcija; isprekidane: povratne vr
 save('order-sequence', body, 610)
 
 # 4. Dependency direction: the service receives its dependencies; server.mjs composes.
-body = box(30, 60, 250, 80, 'HTTP sloj') + box(395, 60, 250, 80, 'Servis') + box(760, 40, 250, 120, 'Ovisnosti', 'katalog, narudžbe, obavijest')
+body = box(30, 60, 250, 80, 'HTTP sloj') + box(395, 60, 250, 80, 'Servis') + box(760, 40, 250, 120, 'Zavisnosti', 'katalog, narudžbe, obavijest')
 body += arrow(282, 100, 387, 100, 'poziva') + arrow(647, 100, 752, 100, 'poziva')
 body += box(270, 300, 500, 80, 'server.mjs', '')
 for x in (155, 520, 885):
@@ -99,7 +99,7 @@ body += text(520, 440, 'Isprekidana strelica: ostvaruje iste funkcije. Servis se
 save('swap-implementation', body, 460)
 
 # 6. Process lifecycle with failure exits.
-steps = [(30, 'Konfiguracija', 'čitanje i provjera'), (290, 'Sastavljanje', 'stvaranje ovisnosti'), (550, 'listen', 'tek sada stižu zahtjevi'), (810, 'Rad', 'obrada zahtjeva')]
+steps = [(30, 'Konfiguracija', 'čitanje i provjera'), (290, 'Sastavljanje', 'stvaranje zavisnosti'), (550, 'listen', 'tek sada stižu zahtjevi'), (810, 'Rad', 'obrada zahtjeva')]
 body = text(520, 28, 'Pokretanje', 20, INK, 600)
 for i, (x, l, s) in enumerate(steps):
     body += box(x, 45, 200, 100, l, s)

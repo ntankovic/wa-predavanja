@@ -42,7 +42,7 @@ export async function handleRequest(req, res) {
   }
   if (scenario === "slow") await new Promise((r) => setTimeout(r, 2000));
   if (scenario === "error")
-    return json(503, { error: "Simulirana nedostupnost ovisnosti" });
+    return json(503, { error: "Simulirana nedostupnost zavisnosti" });
   if (scenario === "html") {
     res.writeHead(200, {
       "Content-Type": "text/html; charset=utf-8",
